@@ -1,0 +1,34 @@
+# Valor Qatar — Business Verification Register
+
+**Purpose:** Tracks all commercial, product, brand, legal, and operational claims present in the prototype or required for production launch.  
+**Governance Rule:** **No unverified claim may be published as a confirmed fact** on the production website or in JSON-LD structured data. Items remain masked, omitted, or marked *"Price on Request / Confirm via WhatsApp"* until signed off by Valor Qatar stakeholders.
+
+---
+
+## Verification Register
+
+| ID | Domain | Prototype / Assumed Value | Evidence in Repository | Risk if Published Unverified | Target Owner | Status | Production Fallback Rule |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **BVR-01** | **Contact & WhatsApp** | `+974 5999 2926` | Observed on discarded social flyer image (`829996829_...jpg`, `645566574_...jpg`); hardcoded in `index.html` & `app.js`. | Enquiries routed to an inactive, personal, or campaign-specific phone line. | Valor Operations | `UNVERIFIED` | Confirm official WhatsApp Business API / Concierge number and whether separate B2B/corporate line exists. |
+| **BVR-02** | **Showroom Location** | `"Salwa Road / Al Waab, Doha, State of Qatar"` | Inferred from earlier search/prototype copy; not proven by photos on disk. | Customers driving to the wrong physical location in Doha; invalid `LocalBusiness` schema. | Valor Operations | `UNVERIFIED` | Omit street address until exact building, zone, street, and Google Maps pin are confirmed. |
+| **BVR-03** | **Operating Hours** | `"Daily: 9:00 AM – 11:00 PM"` | Hardcoded in `index.html:502`. | Customers arriving when boutique is closed (e.g., Friday prayer hours or Ramadan hours). | Valor Operations | `UNVERIFIED` | Omit fixed hours or replace with `"Contact concierge for showroom hours"` until confirmed. |
+| **BVR-04** | **Sendian Group Relationship** | `"Sendian Group • Doha, Qatar"` / `"1973"` | Workspace parent directory name (`Sendian group\Valor QTR`); prototype footer/hero claims. | Misstating legal entity ownership, trade license name, or brand attribution. | Sendian / Valor Mgmt | `UNVERIFIED` | Confirm exact legal name, CR/trade name, and approved co-branding text (Arabic & English). |
+| **BVR-05** | **Delivery Coverage & Fees** | `"Free Delivery on Orders Over 500 QAR"`; Same-day delivery across Doha, Lusail, The Pearl, Al Rayyan, Al Wakrah | Hardcoded in `index.html:27` and `#showroom` cards. | Customer disputes over unexpected delivery fees or out-of-zone addresses (e.g., Al Khor, Mesaieed). | Valor Logistics | `UNVERIFIED` | State delivery zones/fees only after confirmation; otherwise use `"Delivery across Qatar arranged via Concierge"`. |
+| **BVR-06** | **Same-Day & Refrigerated Fleet** | `"Climate-Controlled Delivery"`, `"Specialized refrigerated fleet"`, same-day cutoff | Hardcoded in `index.html:155-156`. | Misrepresentation if third-party couriers or non-refrigerated vans are used, or if cakes/towers need 24–48h notice. | Valor Logistics | `UNVERIFIED` | Confirm minimum lead times per category (e.g., fresh bouquets vs. custom fondant cakes vs. Warak Enab towers). |
+| **BVR-07** | **Product Names & Grouping** | 464/470 items named `"Selection #01"`, etc.; 470 photos treated as 470 products | Verified in `products.js` audit; perceptual hashing shows ~54 alternate-angle shots. | Confusing catalogue with duplicate products and non-brand names. | Valor Merchandising | `UNVERIFIED` | Group multi-angle photos under parent products and obtain authentic EN + AR names for every publishable SKU. |
+| **BVR-08** | **Product Pricing & Variants** | 220–1,850 QAR prices; `Original`, `Deluxe (+25%)`, `Grand Imperial (+60%)` | Synthetic modulo formula in prototype enrichment script (`audit_repo_and_media.py`). | Severe pricing errors, customer distrust, and commercial loss. | Valor Finance / Sales | `UNVERIFIED` | **Do not display synthetic prices.** Use `Price on Request` (`السعر عند الطلب`) unless verified fixed/starting prices are supplied. |
+| **BVR-09** | **Ingredients & Floral Origins** | `"100% Belgian cacao"`, `"Belgian & Swiss single-origin"`, `"Dutch Naomi roses"`, `"Medjool dates"`, `"Ecuadorian blooms"` | Prototype copy written without lab/supplier spec sheets. | False provenance claims; food allergen liability (nuts, sesame, dairy, gluten, halal certification). | Valor Kitchen / Florist | `UNVERIFIED` | Confirm chocolate couverture origin, date cultivar, floral sourcing, and mandatory allergen disclosures before publishing specs. |
+| **BVR-10** | **Customization Rules & Toppers** | Fixed `+50 QAR` topper fee; arbitrary combination of any base + flower + filling + topper in builder | Hardcoded in `index.html:262-340`. | Customers configuring physically impossible combinations (e.g., Warak Enab inside an Arabian Horse box with roses). | Valor Production | `UNVERIFIED` | Replace fixed-price builder with a **Consultation Request Form** listing valid, approved presentation pairings only. |
+| **BVR-11** | **Product Availability & Seasonality** | All 470 items shown year-round including Ramadan, Hajj, Class of 2024, Summer Coconuts | Photos span 2024–2026 Instagram seasons (`Class of 2024` cake text visible). | Enquiries for discontinued seasonal boxes, outdated graduation years, or unavailable novelty molds. | Valor Merchandising | `UNVERIFIED` | Introduce `availability` and `publicationStatus` flags; archive outdated year-specific cakes unless made-to-order. |
+| **BVR-12** | **Corporate & Majlis B2B Services** | `"Corporate VIP Hampers"`, `"Wedding Gifting & Favors"`, `"Majlis Banquet Catering"` | Prototype footer links & photo evidence of event setups (`481863025_...jpg`). | Overpromising bulk capacity, custom ribbon printing MOQs, or invoice terms without SLA. | Valor B2B / Events | `UNVERIFIED` | Confirm MOQs, custom corporate branding lead times, and dedicated B2B contact channel. |
+| **BVR-13** | **Domain, Social & Legal Pages** | No domain, no Instagram handle, no Privacy Policy / Terms / Allergen Notice | Absent in repository. | Incomplete legal compliance (Qatar e-commerce & data privacy requirements) and broken canonical/OG URLs. | Valor Legal / Marketing | `UNVERIFIED` | Confirm canonical domain (`valorqatar.com` / `.qa`?), official Instagram/TikTok handles, and privacy/cookie copy. |
+
+---
+
+## Sign-Off Checklist Required to Unblock Phase 2 Build
+
+1. Official WhatsApp Business number(s) + customer support hours.
+2. Verified storefront domain name (`https://...`) and official social links.
+3. Curated product spreadsheet (grouping images into unique SKUs, English & Arabic names, verified pricing or explicit `price_on_request` flag, lead times, and allergen notes).
+4. Approved showroom address (or decision to list `"Doha, Qatar — Showroom details via Concierge"` initially) and delivery fee/zone policy.
+5. Approved Sendian Group brand attribution copy (EN & AR).
