@@ -1,0 +1,77 @@
+{
+  "id": "valor-chocolates-016",
+  "sku": "VLR-CHO-016",
+  "slug": {
+    "en": "chocolates-016-613071562",
+    "ar": "chocolates-016-613071562"
+  },
+  "name": {
+    "en": "Valor Artisanal Chocolate Presentation (VLR-CHO-016)",
+    "ar": "تشكيلة شوكولاتة فاخرة من فالور (VLR-CHO-016)"
+  },
+  "shortDescription": {
+    "en": "Handcrafted chocolate assortment prepared for gifting and hospitality. Confirm exact piece count and availability via concierge.",
+    "ar": "تشكيلة شوكولاتة مختارة معدة للضيافة والإهداء. يمكن تأكيد التفاصيل والتوفر مباشرة عبر الكونسيرج."
+  },
+  "description": {
+    "en": "Handcrafted chocolate assortment prepared for gifting and hospitality. Confirm exact piece count and availability via concierge.",
+    "ar": "تشكيلة شوكولاتة مختارة معدة للضيافة والإهداء. يمكن تأكيد التفاصيل والتوفر مباشرة عبر الكونسيرج."
+  },
+  "primaryCategory": "chocolates",
+  "collections": ["arabian-horse"],
+  "occasions": ["everyday-gifting", "majlis-weddings"],
+  "images": [
+    {
+      "id": "VLR-CHO-016-IMG-01",
+      "masterPath": "01_Chocolates_and_Pralines/613071562_17928019323189999_751058540049503167_n.jpg",
+      "mediaKey": "vlr-cho-016-01-613071562",
+      "role": "primary",
+      "alt": {
+        "en": "Valor Artisanal Chocolate Presentation (VLR-CHO-016) — view 1",
+        "ar": "تشكيلة شوكولاتة فاخرة من فالور (VLR-CHO-016) — زاوية 1"
+      },
+      "width": 1080,
+      "height": 1080
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "arabian-horse"
+  },
+  "featured": false,
+  "sortWeight": 116,
+  "seo": {
+    "title": {
+      "en": "Valor Artisanal Chocolate Presentation (VLR-CHO-016) | Valor Qatar",
+      "ar": "تشكيلة شوكولاتة فاخرة من فالور (VLR-CHO-016) | فالور قطر"
+    },
+    "description": {
+      "en": "Handcrafted chocolate assortment prepared for gifting and hospitality. Confirm exact piece count and availability via concierge.",
+      "ar": "تشكيلة شوكولاتة مختارة معدة للضيافة والإهداء. يمكن تأكيد التفاصيل والتوفر مباشرة عبر الكونسيرج."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Valor Artisanal Chocolate Presentation (VLR-CHO-016)",
+      "ar": "تشكيلة شوكولاتة فاخرة من فالور (VLR-CHO-016)"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

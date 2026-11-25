@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://valor.sendianmedia.com/sitemap-index.xml

@@ -1,0 +1,77 @@
+{
+  "id": "valor-dates-sweets-048",
+  "sku": "VLR-DAT-048",
+  "slug": {
+    "en": "dates-sweets-048-624888636",
+    "ar": "dates-sweets-048-624888636"
+  },
+  "name": {
+    "en": "Valor Dates & Traditional Sweets Box (VLR-DAT-048)",
+    "ar": "تشكيلة التمور والحلويات الشرقية من فالور (VLR-DAT-048)"
+  },
+  "shortDescription": {
+    "en": "Curated presentation of dates, traditional Arabic sweets or French sablés arranged for majlis hosting.",
+    "ar": "تشكيلة منتقاة من التمور والحلويات الشرقية أو بسكويت السابليه لضيافة المجالس."
+  },
+  "description": {
+    "en": "Curated presentation of dates, traditional Arabic sweets or French sablés arranged for majlis hosting.",
+    "ar": "تشكيلة منتقاة من التمور والحلويات الشرقية أو بسكويت السابليه لضيافة المجالس."
+  },
+  "primaryCategory": "dates-sweets",
+  "collections": ["porcelain-white"],
+  "occasions": ["majlis-weddings", "ramadan-eid"],
+  "images": [
+    {
+      "id": "VLR-DAT-048-IMG-01",
+      "masterPath": "04_Dates_and_Arabic_Sweets/624888636_18133096285504198_4381401423586899841_n.jpg",
+      "mediaKey": "vlr-dat-048-01-624888636",
+      "role": "primary",
+      "alt": {
+        "en": "Valor Dates & Traditional Sweets Box (VLR-DAT-048) — view 1",
+        "ar": "تشكيلة التمور والحلويات الشرقية من فالور (VLR-DAT-048) — زاوية 1"
+      },
+      "width": 695,
+      "height": 695
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "porcelain-white"
+  },
+  "featured": false,
+  "sortWeight": 148,
+  "seo": {
+    "title": {
+      "en": "Valor Dates & Traditional Sweets Box (VLR-DAT-048) | Valor Qatar",
+      "ar": "تشكيلة التمور والحلويات الشرقية من فالور (VLR-DAT-048) | فالور قطر"
+    },
+    "description": {
+      "en": "Curated presentation of dates, traditional Arabic sweets or French sablés arranged for majlis hosting.",
+      "ar": "تشكيلة منتقاة من التمور والحلويات الشرقية أو بسكويت السابليه لضيافة المجالس."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Valor Dates & Traditional Sweets Box (VLR-DAT-048)",
+      "ar": "تشكيلة التمور والحلويات الشرقية من فالور (VLR-DAT-048)"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

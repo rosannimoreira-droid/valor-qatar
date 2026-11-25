@@ -1,0 +1,165 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
+import { BUSINESS_CONFIG } from '@/config/business';
+import { getDictionary, type Locale } from '@/i18n';
+import editorialMedia from '@/data/editorial-media.json';
+
+export const getStaticPaths: GetStaticPaths = () => [
+  { params: { locale: 'en' } },
+  { params: { locale: 'ar' } },
+];
+
+const locale = (Astro.params.locale === 'ar' ? 'ar' : 'en') as Locale;
+const t = getDictionary(locale);
+const isRtl = locale === 'ar';
+
+const storyPhoto =
+  editorialMedia.find((item) => item.mediaKey === 'editorial-08-751819132') ?? editorialMedia[0];
+const packagingQuote = isRtl
+  ? BUSINESS_CONFIG.brand.packagingQuoteAr
+  : BUSINESS_CONFIG.brand.packagingQuoteEn;
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t.about.title} — ${t.meta.siteName}`}
+  description={t.about.lead}
+>
+  <section class="page-head">
+    <div class="container">
+      <Breadcrumbs
+        items={[{ label: t.pdp.breadcrumbHome, href: `/${locale}/` }, { label: t.nav.about }]}
+      />
+      <h1>{t.about.title}</h1>
+      <p class="page-lead prose-measure">{t.about.lead}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container story-grid">
+      <div class="story-media">
+        <ResponsiveImage
+          mediaKey={storyPhoto.mediaKey}
+          alt={t.about.storyTitle}
+          width={storyPhoto.width}
+          height={storyPhoto.height}
+          sizes="(max-width: 899px) 92vw, 44vw"
+          imgClass="story-img"
+        />
+      </div>
+      <div class="story-copy">
+        <h2>{t.about.storyTitle}</h2>
+        <p class="prose-measure">{t.about.storyP1}</p>
+        <p class="prose-measure">{t.about.storyP2}</p>
+        <blockquote class="story-quote prose-measure">“{packagingQuote}”</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sand" aria-labelledby="heading-packaging">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="heading-packaging">{t.about.packagingTitle}</h2>
+      </div>
+      <div class="packaging-grid">
+        {
+          t.about.packagingItems.map((item) => (
+            <article class="packaging-card">
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding-block: var(--space-8) var(--space-6);
+    background-color: var(--color-surface-sand);
+    border-block-end: 1px solid var(--color-border-hairline);
+  }
+
+  .page-lead {
+    margin-block-start: var(--space-3);
+    color: var(--color-ink-muted);
+    font-size: 1.0625rem;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .story-grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: var(--space-12);
+    }
+  }
+
+  .story-media {
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background-color: var(--color-surface-sand);
+  }
+
+  .story-media :global(.story-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    color: var(--color-ink-muted);
+  }
+
+  .story-quote {
+    margin-block-start: var(--space-2);
+    padding-inline-start: var(--space-5);
+    border-inline-start: 3px solid var(--color-terracotta);
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    line-height: 1.45;
+    color: var(--color-ink-obsidian);
+  }
+
+  .packaging-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 768px) {
+    .packaging-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .packaging-card {
+    padding: var(--space-6);
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .packaging-card p {
+    color: var(--color-ink-muted);
+    font-size: 0.9375rem;
+  }
+</style>

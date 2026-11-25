@@ -1,0 +1,77 @@
+{
+  "id": "valor-seasonal-004",
+  "sku": "VLR-SEA-004",
+  "slug": {
+    "en": "newborn-welcome-acrylic-display-blue-edition-004",
+    "ar": "newborn-welcome-acrylic-display-blue-edition-004"
+  },
+  "name": {
+    "en": "Newborn Welcome Acrylic Display — Blue Edition",
+    "ar": "تنسيق استقبال المولود بالأكريليك — الإصدار السماوي"
+  },
+  "shortDescription": {
+    "en": "Round arrangement in a clear acrylic case with butterfly accents and Arabic greeting.",
+    "ar": "تنسيق دائري داخل صندوق أكريليك شفاف بتفاصيل الفراشات وعبارة ألف مبروك المولود."
+  },
+  "description": {
+    "en": "Limited seasonal presentation created for Qatari holidays and family milestones.",
+    "ar": "تشكيلة موسمية مخصصة للأعياد الوطنية والدينية والمناسبات العائلية في قطر."
+  },
+  "primaryCategory": "seasonal",
+  "collections": ["acrylic"],
+  "occasions": ["majlis-weddings", "newborn", "ramadan-eid"],
+  "images": [
+    {
+      "id": "VLR-SEA-004-IMG-01",
+      "masterPath": "07_Seasonal_and_Occasions/523307794_18083556166848346_1377833580135738050_n.jpg",
+      "mediaKey": "vlr-sea-004-01-523307794",
+      "role": "primary",
+      "alt": {
+        "en": "Newborn Welcome Acrylic Display — Blue Edition — view 1",
+        "ar": "تنسيق استقبال المولود بالأكريليك — الإصدار السماوي — زاوية 1"
+      },
+      "width": 1080,
+      "height": 1080
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "seasonal",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "acrylic"
+  },
+  "featured": true,
+  "sortWeight": 12,
+  "seo": {
+    "title": {
+      "en": "Newborn Welcome Acrylic Display — Blue Edition | Valor Qatar",
+      "ar": "تنسيق استقبال المولود بالأكريليك — الإصدار السماوي | فالور قطر"
+    },
+    "description": {
+      "en": "Round arrangement in a clear acrylic case with butterfly accents and Arabic greeting.",
+      "ar": "تنسيق دائري داخل صندوق أكريليك شفاف بتفاصيل الفراشات وعبارة ألف مبروك المولود."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Newborn Welcome Acrylic Display — Blue Edition",
+      "ar": "تنسيق استقبال المولود بالأكريليك — الإصدار السماوي"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

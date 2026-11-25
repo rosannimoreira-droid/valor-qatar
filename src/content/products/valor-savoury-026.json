@@ -1,0 +1,77 @@
+{
+  "id": "valor-savoury-026",
+  "sku": "VLR-SAV-026",
+  "slug": {
+    "en": "savoury-026-656002988",
+    "ar": "savoury-026-656002988"
+  },
+  "name": {
+    "en": "Valor Savoury & Warak Enab Platter (VLR-SAV-026)",
+    "ar": "تشكيلة الموالح وورق العنب من فالور (VLR-SAV-026)"
+  },
+  "shortDescription": {
+    "en": "Savoury hospitality arrangement prepared for receptions and family gatherings. Preparation lead time confirmed on enquiry.",
+    "ar": "تقديم موالح وورق عنب معدّ للاستقبالات والمجالس العائلية، مع تأكيد مدة التجهيز عند الطلب."
+  },
+  "description": {
+    "en": "Savoury hospitality arrangement prepared for receptions and family gatherings. Preparation lead time confirmed on enquiry.",
+    "ar": "تقديم موالح وورق عنب معدّ للاستقبالات والمجالس العائلية، مع تأكيد مدة التجهيز عند الطلب."
+  },
+  "primaryCategory": "savoury",
+  "collections": ["porcelain-white"],
+  "occasions": ["majlis-weddings"],
+  "images": [
+    {
+      "id": "VLR-SAV-026-IMG-01",
+      "masterPath": "05_Savory_and_Appetizers/656002988_18046040615518031_5769507228974599329_n.jpg",
+      "mediaKey": "vlr-sav-026-01-656002988",
+      "role": "primary",
+      "alt": {
+        "en": "Valor Savoury & Warak Enab Platter (VLR-SAV-026) — view 1",
+        "ar": "تشكيلة الموالح وورق العنب من فالور (VLR-SAV-026) — زاوية 1"
+      },
+      "width": 1366,
+      "height": 1366
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "porcelain-white"
+  },
+  "featured": false,
+  "sortWeight": 126,
+  "seo": {
+    "title": {
+      "en": "Valor Savoury & Warak Enab Platter (VLR-SAV-026) | Valor Qatar",
+      "ar": "تشكيلة الموالح وورق العنب من فالور (VLR-SAV-026) | فالور قطر"
+    },
+    "description": {
+      "en": "Savoury hospitality arrangement prepared for receptions and family gatherings. Preparation lead time confirmed on enquiry.",
+      "ar": "تقديم موالح وورق عنب معدّ للاستقبالات والمجالس العائلية، مع تأكيد مدة التجهيز عند الطلب."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Valor Savoury & Warak Enab Platter (VLR-SAV-026)",
+      "ar": "تشكيلة الموالح وورق العنب من فالور (VLR-SAV-026)"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

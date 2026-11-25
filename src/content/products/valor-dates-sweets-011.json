@@ -1,0 +1,77 @@
+{
+  "id": "valor-dates-sweets-011",
+  "sku": "VLR-DAT-011",
+  "slug": {
+    "en": "arabian-horse-heritage-box-assorted-sabl-s-011",
+    "ar": "arabian-horse-heritage-box-assorted-sabl-s-011"
+  },
+  "name": {
+    "en": "Arabian Horse Heritage Box — Assorted Sablés",
+    "ar": "صندوق الخيل العربي التراثي — تشكيلة السابليه"
+  },
+  "shortDescription": {
+    "en": "Slate-blue collector box featuring Arabian horse artwork and colourful French sablés.",
+    "ar": "صندوق الخيل العربي الأزرق الملكي محشو بتشكيلة بسكويت السابليه الملون."
+  },
+  "description": {
+    "en": "Curated presentation of dates, traditional Arabic sweets or French sablés arranged for majlis hosting.",
+    "ar": "تشكيلة منتقاة من التمور والحلويات الشرقية أو بسكويت السابليه لضيافة المجالس."
+  },
+  "primaryCategory": "dates-sweets",
+  "collections": ["arabian-horse"],
+  "occasions": ["majlis-weddings", "ramadan-eid"],
+  "images": [
+    {
+      "id": "VLR-DAT-011-IMG-01",
+      "masterPath": "04_Dates_and_Arabic_Sweets/617562485_17919031089092408_8839440065912884459_n.jpg",
+      "mediaKey": "vlr-dat-011-01-617562485",
+      "role": "primary",
+      "alt": {
+        "en": "Arabian Horse Heritage Box — Assorted Sablés — view 1",
+        "ar": "صندوق الخيل العربي التراثي — تشكيلة السابليه — زاوية 1"
+      },
+      "width": 4096,
+      "height": 4096
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "arabian-horse"
+  },
+  "featured": true,
+  "sortWeight": 4,
+  "seo": {
+    "title": {
+      "en": "Arabian Horse Heritage Box — Assorted Sablés | Valor Qatar",
+      "ar": "صندوق الخيل العربي التراثي — تشكيلة السابليه | فالور قطر"
+    },
+    "description": {
+      "en": "Slate-blue collector box featuring Arabian horse artwork and colourful French sablés.",
+      "ar": "صندوق الخيل العربي الأزرق الملكي محشو بتشكيلة بسكويت السابليه الملون."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Arabian Horse Heritage Box — Assorted Sablés",
+      "ar": "صندوق الخيل العربي التراثي — تشكيلة السابليه"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

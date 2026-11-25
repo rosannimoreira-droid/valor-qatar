@@ -1,0 +1,45 @@
+---
+interface Props {
+  mediaKey: string;
+  alt: string;
+  width: number;
+  height: number;
+  sizes?: string;
+  priority?: boolean;
+  class?: string;
+  imgClass?: string;
+}
+
+const {
+  mediaKey,
+  alt,
+  width,
+  height,
+  sizes = '(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw',
+  priority = false,
+  class: pictureClass = '',
+  imgClass = '',
+} = Astro.props;
+
+const avifSrcset = `/media/${mediaKey}-400.avif 400w, /media/${mediaKey}-800.avif 800w, /media/${mediaKey}-1200.avif 1200w`;
+const webpSrcset = `/media/${mediaKey}-400.webp 400w, /media/${mediaKey}-800.webp 800w, /media/${mediaKey}-1200.webp 1200w`;
+const jpgSrcset = `/media/${mediaKey}-400.jpg 400w, /media/${mediaKey}-800.jpg 800w, /media/${mediaKey}-1200.jpg 1200w`;
+const fallbackSrc = `/media/${mediaKey}-800.jpg`;
+---
+
+<picture class={`valor-picture ${pictureClass}`.trim()}>
+  <source type="image/avif" srcset={avifSrcset} sizes={sizes} />
+  <source type="image/webp" srcset={webpSrcset} sizes={sizes} />
+  <img
+    src={fallbackSrc}
+    srcset={jpgSrcset}
+    sizes={sizes}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={priority ? 'eager' : 'lazy'}
+    decoding={priority ? 'sync' : 'async'}
+    fetchpriority={priority ? 'high' : undefined}
+    class={imgClass}
+  />
+</picture>

@@ -1,0 +1,77 @@
+{
+  "id": "valor-cakes-desserts-005",
+  "sku": "VLR-CAK-005",
+  "slug": {
+    "en": "cakes-desserts-005-553126161",
+    "ar": "cakes-desserts-005-553126161"
+  },
+  "name": {
+    "en": "Valor Celebration Cake & Patisserie (VLR-CAK-005)",
+    "ar": "كيك مناسبات وحلويات فاخرة من فالور (VLR-CAK-005)"
+  },
+  "shortDescription": {
+    "en": "Custom celebration cake or patisserie tray crafted to order. Confirm flavour preferences and lead time with concierge.",
+    "ar": "كيك مناسبات أو تارت حلويات يُجهز حسب الطلب، مع تأكيد النكهات وموعد التسليم عبر الكونسيرج."
+  },
+  "description": {
+    "en": "Custom celebration cake or patisserie tray crafted to order. Confirm flavour preferences and lead time with concierge.",
+    "ar": "كيك مناسبات أو تارت حلويات يُجهز حسب الطلب، مع تأكيد النكهات وموعد التسليم عبر الكونسيرج."
+  },
+  "primaryCategory": "cakes-desserts",
+  "collections": ["porcelain-white"],
+  "occasions": ["everyday-gifting"],
+  "images": [
+    {
+      "id": "VLR-CAK-005-IMG-01",
+      "masterPath": "06_Custom_Cakes_and_Desserts/553126161_18089022031848346_1339043568953270166_n.jpg",
+      "mediaKey": "vlr-cak-005-01-553126161",
+      "role": "primary",
+      "alt": {
+        "en": "Valor Celebration Cake & Patisserie (VLR-CAK-005) — view 1",
+        "ar": "كيك مناسبات وحلويات فاخرة من فالور (VLR-CAK-005) — زاوية 1"
+      },
+      "width": 720,
+      "height": 1280
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "porcelain-white"
+  },
+  "featured": false,
+  "sortWeight": 105,
+  "seo": {
+    "title": {
+      "en": "Valor Celebration Cake & Patisserie (VLR-CAK-005) | Valor Qatar",
+      "ar": "كيك مناسبات وحلويات فاخرة من فالور (VLR-CAK-005) | فالور قطر"
+    },
+    "description": {
+      "en": "Custom celebration cake or patisserie tray crafted to order. Confirm flavour preferences and lead time with concierge.",
+      "ar": "كيك مناسبات أو تارت حلويات يُجهز حسب الطلب، مع تأكيد النكهات وموعد التسليم عبر الكونسيرج."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Valor Celebration Cake & Patisserie (VLR-CAK-005)",
+      "ar": "كيك مناسبات وحلويات فاخرة من فالور (VLR-CAK-005)"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

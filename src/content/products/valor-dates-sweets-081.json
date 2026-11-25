@@ -1,0 +1,77 @@
+{
+  "id": "valor-dates-sweets-081",
+  "sku": "VLR-DAT-081",
+  "slug": {
+    "en": "taupe-satin-ribbon-box-assorted-sweets-petits-fours-081",
+    "ar": "taupe-satin-ribbon-box-assorted-sweets-petits-fours-081"
+  },
+  "name": {
+    "en": "Taupe Satin-Ribbon Box — Assorted Sweets & Petits Fours",
+    "ar": "صندوق التوب بشريطة الساتان — تشكيلة حلويات مختارة"
+  },
+  "shortDescription": {
+    "en": "Warm taupe keepsake box finished with an ivory satin ribbon and assorted pastries.",
+    "ar": "صندوق فاخر بلون التوب مزين بشريطة ساتان عاجية وتشكيلة حلويات."
+  },
+  "description": {
+    "en": "Curated presentation of dates, traditional Arabic sweets or French sablés arranged for majlis hosting.",
+    "ar": "تشكيلة منتقاة من التمور والحلويات الشرقية أو بسكويت السابليه لضيافة المجالس."
+  },
+  "primaryCategory": "dates-sweets",
+  "collections": ["taupe-ribbon"],
+  "occasions": ["majlis-weddings", "ramadan-eid"],
+  "images": [
+    {
+      "id": "VLR-DAT-081-IMG-01",
+      "masterPath": "04_Dates_and_Arabic_Sweets/766074381_18121900774848346_3701304050566125951_n.jpg",
+      "mediaKey": "vlr-dat-081-01-766074381",
+      "role": "primary",
+      "alt": {
+        "en": "Taupe Satin-Ribbon Box — Assorted Sweets & Petits Fours — view 1",
+        "ar": "صندوق التوب بشريطة الساتان — تشكيلة حلويات مختارة — زاوية 1"
+      },
+      "width": 2800,
+      "height": 3500
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "taupe-ribbon"
+  },
+  "featured": true,
+  "sortWeight": 3,
+  "seo": {
+    "title": {
+      "en": "Taupe Satin-Ribbon Box — Assorted Sweets & Petits Fours | Valor Qatar",
+      "ar": "صندوق التوب بشريطة الساتان — تشكيلة حلويات مختارة | فالور قطر"
+    },
+    "description": {
+      "en": "Warm taupe keepsake box finished with an ivory satin ribbon and assorted pastries.",
+      "ar": "صندوق فاخر بلون التوب مزين بشريطة ساتان عاجية وتشكيلة حلويات."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Taupe Satin-Ribbon Box — Assorted Sweets & Petits Fours",
+      "ar": "صندوق التوب بشريطة الساتان — تشكيلة حلويات مختارة"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

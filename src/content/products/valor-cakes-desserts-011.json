@@ -1,0 +1,77 @@
+{
+  "id": "valor-cakes-desserts-011",
+  "sku": "VLR-CAK-011",
+  "slug": {
+    "en": "graduation-mortarboard-celebration-cake-011",
+    "ar": "graduation-mortarboard-celebration-cake-011"
+  },
+  "name": {
+    "en": "Graduation Mortarboard Celebration Cake",
+    "ar": "كيك قبعة التخرج الاحتفالي"
+  },
+  "shortDescription": {
+    "en": "Two-tone white and gold celebration cake topped with a sculpted graduation cap.",
+    "ar": "كيك احتفالي أبيض وذهبي متوج بمجسم قبعة التخرج."
+  },
+  "description": {
+    "en": "Custom celebration cake or patisserie tray crafted to order. Confirm flavour preferences and lead time with concierge.",
+    "ar": "كيك مناسبات أو تارت حلويات يُجهز حسب الطلب، مع تأكيد النكهات وموعد التسليم عبر الكونسيرج."
+  },
+  "primaryCategory": "cakes-desserts",
+  "collections": ["porcelain-white"],
+  "occasions": ["everyday-gifting", "graduation"],
+  "images": [
+    {
+      "id": "VLR-CAK-011-IMG-01",
+      "masterPath": "06_Custom_Cakes_and_Desserts/622528760_18117374227606255_6952600027679598375_n.jpg",
+      "mediaKey": "vlr-cak-011-01-622528760",
+      "role": "primary",
+      "alt": {
+        "en": "Graduation Mortarboard Celebration Cake — view 1",
+        "ar": "كيك قبعة التخرج الاحتفالي — زاوية 1"
+      },
+      "width": 1384,
+      "height": 1491
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "porcelain-white"
+  },
+  "featured": true,
+  "sortWeight": 10,
+  "seo": {
+    "title": {
+      "en": "Graduation Mortarboard Celebration Cake | Valor Qatar",
+      "ar": "كيك قبعة التخرج الاحتفالي | فالور قطر"
+    },
+    "description": {
+      "en": "Two-tone white and gold celebration cake topped with a sculpted graduation cap.",
+      "ar": "كيك احتفالي أبيض وذهبي متوج بمجسم قبعة التخرج."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Graduation Mortarboard Celebration Cake",
+      "ar": "كيك قبعة التخرج الاحتفالي"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

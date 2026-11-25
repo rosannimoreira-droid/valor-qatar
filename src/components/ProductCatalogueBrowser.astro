@@ -1,0 +1,605 @@
+---
+import Breadcrumbs, { type BreadcrumbItem } from '@/components/Breadcrumbs.astro';
+import ProductCard from '@/components/ProductCard.astro';
+import Icon from '@/components/Icon.astro';
+import { CATEGORY_IDS, OCCASION_IDS } from '@/content/config';
+import { getDictionary, formatTemplate, type Locale } from '@/i18n';
+import { getCategoryUrl, getOccasionUrl, type ProductEntry } from '@/lib/catalog';
+
+interface Props {
+  locale: Locale;
+  products: ProductEntry[];
+  title: string;
+  lead: string;
+  breadcrumbs: BreadcrumbItem[];
+  activeCategory?: string;
+  activeOccasion?: string;
+  showCategoryTabs?: boolean;
+  showOccasionFilter?: boolean;
+}
+
+const {
+  locale,
+  products,
+  title,
+  lead,
+  breadcrumbs,
+  activeCategory = 'all',
+  activeOccasion = 'all',
+  showCategoryTabs = true,
+  showOccasionFilter = true,
+} = Astro.props;
+
+const t = getDictionary(locale);
+const PAGE_BATCH = 48;
+const initialProducts = products.slice(0, PAGE_BATCH);
+
+const categoryTabs = [
+  { id: 'all', label: t.categories.all.name, href: getCategoryUrl(locale, 'all') },
+  ...CATEGORY_IDS.map((id) => ({
+    id,
+    label: t.categories[id].name,
+    href: getCategoryUrl(locale, id),
+  })),
+];
+
+const packagingEntries = Object.entries(t.plp.packagingLabels);
+
+const initialCountText = formatTemplate(t.plp.showingCount, {
+  count: products.length,
+});
+
+const showMoreLabel = locale === 'ar' ? 'عرض المزيد من التصاميم' : 'Show more creations';
+---
+
+<section class="plp-header-band">
+  <div class="container">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="plp-intro">
+      <h1>{title}</h1>
+      <p class="plp-lead prose-measure">{lead}</p>
+    </div>
+
+    {
+      showCategoryTabs && (
+        <nav class="cat-tabs" aria-label={t.plp.filterCategory}>
+          {categoryTabs.map((tab) => (
+            <a
+              href={tab.href}
+              class={`cat-tab${activeCategory === tab.id ? ' is-active' : ''}`}
+              aria-current={activeCategory === tab.id ? 'page' : undefined}
+            >
+              {tab.label}
+            </a>
+          ))}
+        </nav>
+      )
+    }
+
+    {
+      !showCategoryTabs && (
+        <nav class="cat-tabs" aria-label={t.plp.filterOccasion}>
+          <a
+            href={getOccasionUrl(locale, 'all')}
+            class={`cat-tab${activeOccasion === 'all' ? ' is-active' : ''}`}
+          >
+            {t.occasions.all.name}
+          </a>
+          {OCCASION_IDS.map((occId) => (
+            <a
+              href={getOccasionUrl(locale, occId)}
+              class={`cat-tab${activeOccasion === occId ? ' is-active' : ''}`}
+              aria-current={activeOccasion === occId ? 'page' : undefined}
+            >
+              {t.occasions[occId].name}
+            </a>
+          ))}
+        </nav>
+      )
+    }
+  </div>
+</section>
+
+<section class="section">
+  <div
+    class="container"
+    id="catalogue-browser"
+    data-locale={locale}
+    data-category={activeCategory}
+    data-occasion={activeOccasion}
+    data-batch-size={String(PAGE_BATCH)}
+    data-count-template={t.plp.showingCount}
+    data-show-more={showMoreLabel}
+  >
+    <form class="filter-bar" id="catalogue-filter-form" role="search">
+      <div class="filter-field filter-search-field">
+        <label for="catalogue-search" class="sr-only">{t.plp.searchPlaceholder}</label>
+        <div class="search-input-wrap">
+          <Icon name="search" size={17} class="search-input-icon" />
+          <input
+            type="search"
+            id="catalogue-search"
+            name="q"
+            class="filter-input"
+            placeholder={t.plp.searchPlaceholder}
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      {
+        showOccasionFilter && (
+          <div class="filter-field">
+            <label for="filter-occasion" class="filter-label">
+              {t.plp.filterOccasion}
+            </label>
+            <select id="filter-occasion" name="occasion" class="filter-select">
+              <option value="all">{t.occasions.all.name}</option>
+              {OCCASION_IDS.map((occId) => (
+                <option value={occId}>{t.occasions[occId].name}</option>
+              ))}
+            </select>
+          </div>
+        )
+      }
+
+      <div class="filter-field">
+        <label for="filter-packaging" class="filter-label">
+          {t.plp.filterPackaging}
+        </label>
+        <select id="filter-packaging" name="pkg" class="filter-select">
+          <option value="all">{t.plp.allPackaging}</option>
+          {packagingEntries.map(([key, label]) => <option value={key}>{label}</option>)}
+        </select>
+      </div>
+
+      <div class="filter-actions">
+        <button type="submit" class="btn btn-primary btn-sm">
+          {t.plp.searchButton}
+        </button>
+        <button type="button" id="catalogue-reset" class="btn btn-secondary btn-sm" hidden>
+          {t.plp.clearFilters}
+        </button>
+      </div>
+    </form>
+
+    <div class="results-meta">
+      <p id="catalogue-count" class="results-count tabular-nums" aria-live="polite">
+        {initialCountText}
+      </p>
+    </div>
+
+    <div class="product-grid" id="catalogue-grid">
+      {
+        initialProducts.map((product, idx) => (
+          <ProductCard product={product} locale={locale} priority={idx < 4} />
+        ))
+      }
+    </div>
+
+    <div id="catalogue-empty" class="empty-state" hidden>
+      <h2>{t.plp.emptyStateTitle}</h2>
+      <p>{t.plp.emptyStateBody}</p>
+      <button type="button" id="catalogue-empty-reset" class="btn btn-secondary">
+        {t.plp.clearFilters}
+      </button>
+    </div>
+
+    <div class="pagination-wrap" id="catalogue-pagination" hidden={products.length <= PAGE_BATCH}>
+      <button type="button" id="catalogue-load-more" class="btn btn-secondary">
+        <span>{showMoreLabel}</span>
+        <span class="tabular-nums" id="catalogue-remaining">
+          ({Math.max(0, products.length - PAGE_BATCH)})
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  interface CatalogRecord {
+    sku: string;
+    name: string;
+    nameAlt: string;
+    url: string;
+    category: string;
+    categoryLabel: string;
+    occasions: string[];
+    packagingStyle: string;
+    priceText: string;
+    mediaKey: string;
+    alt: string;
+    width: number;
+    height: number;
+  }
+
+  function initCatalogueBrowser() {
+    const root = document.getElementById('catalogue-browser');
+    if (!root) return;
+
+    const locale = root.dataset.locale === 'ar' ? 'ar' : 'en';
+    const fixedCategory = root.dataset.category || 'all';
+    const fixedOccasion = root.dataset.occasion || 'all';
+    const batchSize = Number(root.dataset.batchSize || '48');
+    const countTemplate = root.dataset.countTemplate || 'Showing {count}';
+
+    const form = document.getElementById('catalogue-filter-form') as HTMLFormElement | null;
+    const searchInput = document.getElementById('catalogue-search') as HTMLInputElement | null;
+    const occasionSelect = document.getElementById('filter-occasion') as HTMLSelectElement | null;
+    const packagingSelect = document.getElementById('filter-packaging') as HTMLSelectElement | null;
+    const resetBtn = document.getElementById('catalogue-reset') as HTMLButtonElement | null;
+    const emptyResetBtn = document.getElementById(
+      'catalogue-empty-reset'
+    ) as HTMLButtonElement | null;
+    const countEl = document.getElementById('catalogue-count');
+    const gridEl = document.getElementById('catalogue-grid');
+    const emptyEl = document.getElementById('catalogue-empty');
+    const paginationEl = document.getElementById('catalogue-pagination');
+    const loadMoreBtn = document.getElementById('catalogue-load-more');
+    const remainingEl = document.getElementById('catalogue-remaining');
+
+    if (!form || !searchInput || !gridEl || !countEl || !emptyEl || !paginationEl) return;
+
+    let catalogCache: CatalogRecord[] | null = null;
+    let visibleLimit = batchSize;
+    let filteredCache: CatalogRecord[] = [];
+
+    async function loadCatalog(): Promise<CatalogRecord[]> {
+      if (catalogCache) return catalogCache;
+      const resp = await fetch(`/${locale}/data/catalog.json`);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      catalogCache = (await resp.json()) as CatalogRecord[];
+      return catalogCache;
+    }
+
+    function createCardElement(item: CatalogRecord): HTMLElement {
+      const article = document.createElement('article');
+      article.className = 'product-card';
+
+      const link = document.createElement('a');
+      link.href = item.url;
+      link.className = 'product-card-link';
+
+      const media = document.createElement('div');
+      media.className = 'product-card-media';
+
+      const picture = document.createElement('picture');
+      const srcAvif = document.createElement('source');
+      srcAvif.type = 'image/avif';
+      srcAvif.srcset = `/media/${item.mediaKey}-400.avif 400w, /media/${item.mediaKey}-800.avif 800w, /media/${item.mediaKey}-1200.avif 1200w`;
+      srcAvif.sizes =
+        '(max-width: 479px) 92vw, (max-width: 899px) 46vw, (max-width: 1199px) 30vw, 23vw';
+
+      const srcWebp = document.createElement('source');
+      srcWebp.type = 'image/webp';
+      srcWebp.srcset = `/media/${item.mediaKey}-400.webp 400w, /media/${item.mediaKey}-800.webp 800w, /media/${item.mediaKey}-1200.webp 1200w`;
+      srcWebp.sizes = srcAvif.sizes;
+
+      const img = document.createElement('img');
+      img.src = `/media/${item.mediaKey}-800.jpg`;
+      img.srcset = `/media/${item.mediaKey}-400.jpg 400w, /media/${item.mediaKey}-800.jpg 800w, /media/${item.mediaKey}-1200.jpg 1200w`;
+      img.sizes = srcAvif.sizes;
+      img.alt = item.alt;
+      img.width = item.width;
+      img.height = item.height;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.className = 'product-card-img';
+
+      picture.append(srcAvif, srcWebp, img);
+      media.appendChild(picture);
+
+      const body = document.createElement('div');
+      body.className = 'product-card-body';
+
+      const cat = document.createElement('p');
+      cat.className = 'product-card-cat';
+      cat.textContent = item.categoryLabel;
+
+      const title = document.createElement('h3');
+      title.className = 'product-card-title';
+      title.textContent = item.name;
+
+      const price = document.createElement('p');
+      price.className = 'product-card-price tabular-nums';
+      price.textContent = item.priceText;
+
+      body.append(cat, title, price);
+      link.append(media, body);
+      article.appendChild(link);
+      return article;
+    }
+
+    function renderGrid(items: CatalogRecord[]) {
+      gridEl!.replaceChildren();
+      const slice = items.slice(0, visibleLimit);
+      const frag = document.createDocumentFragment();
+      for (const item of slice) {
+        frag.appendChild(createCardElement(item));
+      }
+      gridEl!.appendChild(frag);
+
+      countEl!.textContent = countTemplate.replace('{count}', String(items.length));
+      emptyEl!.hidden = items.length > 0;
+      const remaining = Math.max(0, items.length - slice.length);
+      paginationEl!.hidden = remaining === 0;
+      if (remainingEl) {
+        remainingEl.textContent = `(${remaining})`;
+      }
+    }
+
+    async function applyFilters(syncUrl = true) {
+      const q = searchInput!.value.trim().toLowerCase();
+      const selectedOccasion = occasionSelect ? occasionSelect.value : 'all';
+      const selectedPkg = packagingSelect ? packagingSelect.value : 'all';
+
+      const hasActiveFilter = q.length > 0 || selectedOccasion !== 'all' || selectedPkg !== 'all';
+
+      if (resetBtn) {
+        resetBtn.hidden = !hasActiveFilter;
+      }
+
+      if (syncUrl) {
+        const nextUrl = new URL(window.location.href);
+        if (q) nextUrl.searchParams.set('q', searchInput!.value.trim());
+        else nextUrl.searchParams.delete('q');
+        if (selectedOccasion !== 'all') nextUrl.searchParams.set('occasion', selectedOccasion);
+        else nextUrl.searchParams.delete('occasion');
+        if (selectedPkg !== 'all') nextUrl.searchParams.set('pkg', selectedPkg);
+        else nextUrl.searchParams.delete('pkg');
+        window.history.replaceState({}, '', nextUrl.toString());
+      }
+
+      try {
+        const allItems = await loadCatalog();
+        filteredCache = allItems.filter((item) => {
+          if (fixedCategory !== 'all' && item.category !== fixedCategory) return false;
+          if (fixedOccasion !== 'all' && !item.occasions.includes(fixedOccasion)) return false;
+          if (selectedOccasion !== 'all' && !item.occasions.includes(selectedOccasion))
+            return false;
+          if (selectedPkg !== 'all' && item.packagingStyle !== selectedPkg) return false;
+          if (q) {
+            const haystack =
+              `${item.name} ${item.nameAlt} ${item.sku} ${item.categoryLabel} ${item.occasions.join(' ')}`.toLowerCase();
+            if (!haystack.includes(q)) return false;
+          }
+          return true;
+        });
+
+        renderGrid(filteredCache);
+
+        if (typeof window.valorTrack === 'function') {
+          window.valorTrack('catalogue_filter', {
+            locale,
+            category: fixedCategory,
+            occasion: selectedOccasion !== 'all' ? selectedOccasion : fixedOccasion,
+            searchTerm: q || undefined,
+            resultsCount: filteredCache.length,
+          });
+        }
+      } catch {
+        // Keep initial SSR items intact if offline/fetch fails
+      }
+    }
+
+    function resetAll() {
+      searchInput!.value = '';
+      if (occasionSelect) occasionSelect.value = 'all';
+      if (packagingSelect) packagingSelect.value = 'all';
+      visibleLimit = batchSize;
+      void applyFilters(true);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      visibleLimit = batchSize;
+      void applyFilters(true);
+    });
+
+    occasionSelect?.addEventListener('change', () => {
+      visibleLimit = batchSize;
+      void applyFilters(true);
+    });
+
+    packagingSelect?.addEventListener('change', () => {
+      visibleLimit = batchSize;
+      void applyFilters(true);
+    });
+
+    resetBtn?.addEventListener('click', resetAll);
+    emptyResetBtn?.addEventListener('click', resetAll);
+
+    loadMoreBtn?.addEventListener('click', async () => {
+      if (!filteredCache.length) {
+        const allItems = await loadCatalog();
+        filteredCache = allItems.filter((item) => {
+          if (fixedCategory !== 'all' && item.category !== fixedCategory) return false;
+          if (fixedOccasion !== 'all' && !item.occasions.includes(fixedOccasion)) return false;
+          return true;
+        });
+      }
+      visibleLimit += batchSize;
+      renderGrid(filteredCache);
+    });
+
+    // Hydrate from URL query params (?q=, ?occasion=, ?pkg=) if present
+    const params = new URLSearchParams(window.location.search);
+    const paramQ = params.get('q');
+    const paramOcc = params.get('occasion');
+    const paramPkg = params.get('pkg');
+    let shouldHydrate = false;
+
+    if (paramQ) {
+      searchInput.value = paramQ;
+      shouldHydrate = true;
+    }
+    if (paramOcc && occasionSelect) {
+      occasionSelect.value = paramOcc;
+      shouldHydrate = true;
+    }
+    if (paramPkg && packagingSelect) {
+      packagingSelect.value = paramPkg;
+      shouldHydrate = true;
+    }
+
+    if (shouldHydrate) {
+      void applyFilters(false);
+    }
+  }
+
+  initCatalogueBrowser();
+</script>
+
+<style>
+  .plp-header-band {
+    padding-block: var(--space-8) var(--space-6);
+    background-color: var(--color-surface-sand);
+    border-block-end: 1px solid var(--color-border-hairline);
+  }
+
+  .plp-intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-block-end: var(--space-6);
+  }
+
+  .plp-lead {
+    color: var(--color-ink-muted);
+    font-size: 1.0625rem;
+  }
+
+  .cat-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .cat-tab {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-hairline);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-ink-obsidian);
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out);
+  }
+
+  .cat-tab:hover {
+    border-color: var(--color-border-strong);
+    background-color: var(--color-canvas-ivory);
+  }
+
+  .cat-tab.is-active {
+    background-color: var(--color-ink-obsidian);
+    border-color: var(--color-ink-obsidian);
+    color: var(--color-canvas-ivory);
+  }
+
+  .filter-bar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    margin-block-end: var(--space-5);
+    align-items: end;
+  }
+
+  @media (min-width: 768px) {
+    .filter-bar {
+      grid-template-columns: minmax(220px, 1.4fr) repeat(2, minmax(170px, 1fr)) auto;
+    }
+  }
+
+  .filter-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .filter-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-ink-muted);
+  }
+
+  .search-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input-wrap :global(.search-input-icon) {
+    position: absolute;
+    inset-inline-start: 12px;
+    color: var(--color-ink-muted);
+    pointer-events: none;
+  }
+
+  .filter-input,
+  .filter-select {
+    width: 100%;
+    height: 40px;
+    padding-inline: 12px;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-canvas-ivory);
+    font-size: 0.9375rem;
+  }
+
+  .filter-input {
+    padding-inline-start: 38px;
+  }
+
+  .filter-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .results-meta {
+    margin-block-end: var(--space-5);
+  }
+
+  .results-count {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink-muted);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--space-12) var(--space-4);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .empty-state[hidden] {
+    display: none;
+  }
+
+  .pagination-wrap {
+    display: flex;
+    justify-content: center;
+    padding-block-start: var(--space-8);
+  }
+
+  .pagination-wrap[hidden] {
+    display: none;
+  }
+</style>

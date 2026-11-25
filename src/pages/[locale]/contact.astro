@@ -1,0 +1,108 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Icon from '@/components/Icon.astro';
+import { BUSINESS_CONFIG, buildWhatsAppUrl } from '@/config/business';
+import { getDictionary, type Locale } from '@/i18n';
+
+export const getStaticPaths: GetStaticPaths = () => [
+  { params: { locale: 'en' } },
+  { params: { locale: 'ar' } },
+];
+
+const locale = (Astro.params.locale === 'ar' ? 'ar' : 'en') as Locale;
+const t = getDictionary(locale);
+const whatsappHref = buildWhatsAppUrl(t.whatsappTemplates.generalEnquiry);
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t.contact.title} — ${t.meta.siteName}`}
+  description={t.contact.lead}
+>
+  <section class="page-head">
+    <div class="container">
+      <Breadcrumbs
+        items={[{ label: t.pdp.breadcrumbHome, href: `/${locale}/` }, { label: t.nav.contact }]}
+      />
+      <h1>{t.contact.title}</h1>
+      <p class="page-lead prose-measure">{t.contact.lead}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <article class="contact-card contact-card-primary">
+        <h2>{t.contact.conciergeTitle}</h2>
+        <p>{t.contact.conciergeBody}</p>
+        <p class="contact-phone tabular-nums" dir="ltr">
+          {BUSINESS_CONFIG.concierge.whatsappDisplay}
+        </p>
+        <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="btn btn-concierge">
+          <Icon name="message" size={18} />
+          <span>{t.contact.whatsappCta}</span>
+        </a>
+      </article>
+
+      <article class="contact-card">
+        <h2>{t.contact.showroomTitle}</h2>
+        <p>{t.contact.showroomBody}</p>
+      </article>
+
+      <article class="contact-card">
+        <h2>{t.contact.deliveryTitle}</h2>
+        <p>{t.contact.deliveryBody}</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding-block: var(--space-8) var(--space-6);
+    background-color: var(--color-surface-sand);
+    border-block-end: 1px solid var(--color-border-hairline);
+  }
+
+  .page-lead {
+    margin-block-start: var(--space-3);
+    color: var(--color-ink-muted);
+    font-size: 1.0625rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 900px) {
+    .contact-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .contact-card {
+    padding: var(--space-6);
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .contact-card p {
+    color: var(--color-ink-muted);
+    font-size: 0.9375rem;
+  }
+
+  .contact-phone {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-ink-obsidian);
+  }
+</style>

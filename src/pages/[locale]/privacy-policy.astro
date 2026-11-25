@@ -1,0 +1,52 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { getDictionary, type Locale } from '@/i18n';
+
+export const getStaticPaths: GetStaticPaths = () => [
+  { params: { locale: 'en' } },
+  { params: { locale: 'ar' } },
+];
+
+const locale = (Astro.params.locale === 'ar' ? 'ar' : 'en') as Locale;
+const t = getDictionary(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t.legal.privacyTitle} — ${t.meta.siteName}`}
+  description={t.legal.privacyBody}
+>
+  <section class="page-head">
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: t.pdp.breadcrumbHome, href: `/${locale}/` },
+          { label: t.legal.privacyTitle },
+        ]}
+      />
+      <h1>{t.legal.privacyTitle}</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="legal-body prose-measure">{t.legal.privacyBody}</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding-block: var(--space-8) var(--space-6);
+    background-color: var(--color-surface-sand);
+    border-block-end: 1px solid var(--color-border-hairline);
+  }
+
+  .legal-body {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-ink-muted);
+  }
+</style>

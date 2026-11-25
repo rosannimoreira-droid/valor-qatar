@@ -1,0 +1,598 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ProductCard from '@/components/ProductCard.astro';
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
+import Icon from '@/components/Icon.astro';
+import { BUSINESS_CONFIG } from '@/config/business';
+import { getDictionary, type Locale } from '@/i18n';
+import {
+  buildProductEnquiryUrl,
+  formatProductPrice,
+  getCategoryUrl,
+  getOccasionUrl,
+  getProductUrl,
+  getPublishedProducts,
+  type ProductEntry,
+} from '@/lib/catalog';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const allProducts = await getPublishedProducts();
+  const paths: Array<{
+    params: { locale: Locale; slug: string };
+    props: { product: ProductEntry; relatedProducts: ProductEntry[] };
+  }> = [];
+
+  for (const product of allProducts) {
+    const sameCatFeatured = allProducts.filter(
+      (candidate) =>
+        candidate.id !== product.id &&
+        candidate.data.primaryCategory === product.data.primaryCategory
+    );
+    const crossComplements = allProducts.filter(
+      (candidate) =>
+        candidate.id !== product.id &&
+        candidate.data.featured &&
+        candidate.data.primaryCategory !== product.data.primaryCategory
+    );
+    const relatedProducts = [...sameCatFeatured.slice(0, 2), ...crossComplements.slice(0, 2)].slice(
+      0,
+      4
+    );
+
+    for (const locale of ['en', 'ar'] as const) {
+      paths.push({
+        params: { locale, slug: product.data.slug[locale] },
+        props: { product, relatedProducts },
+      });
+    }
+  }
+
+  return paths;
+};
+
+interface Props {
+  product: ProductEntry;
+  relatedProducts: ProductEntry[];
+}
+
+const locale = (Astro.params.locale === 'ar' ? 'ar' : 'en') as Locale;
+const { product, relatedProducts } = Astro.props;
+const t = getDictionary(locale);
+const data = product.data;
+
+const primaryImage = data.images[0];
+const categoryName = t.categories[data.primaryCategory].name;
+const priceText = formatProductPrice(data, locale);
+const packagingStyleKey = data.attributes.packagingLine ?? 'assorted';
+const packagingText = t.plp.packagingLabels[packagingStyleKey] ?? packagingStyleKey;
+
+const availabilityText = t.pdp.availabilityValues[data.availability];
+const leadTimeText =
+  data.leadTimeHours !== null
+    ? locale === 'ar'
+      ? `${data.leadTimeHours} ساعة تحضير تقريباً`
+      : `Approx. ${data.leadTimeHours} hours notice`
+    : t.pdp.leadTimePending;
+
+const canonicalUrl = `${BUSINESS_CONFIG.site.canonicalOrigin}${getProductUrl(locale, product)}`;
+const initialWhatsappUrl = buildProductEnquiryUrl(product, locale);
+
+const productJsonLd: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: data.name[locale],
+  sku: data.sku,
+  description: data.description[locale],
+  category: categoryName,
+  image: data.images.map(
+    (img) => `${BUSINESS_CONFIG.site.canonicalOrigin}/media/${img.mediaKey}-1200.jpg`
+  ),
+  brand: {
+    '@type': 'Brand',
+    name: BUSINESS_CONFIG.brand.nameEn,
+  },
+  url: canonicalUrl,
+};
+
+if (data.pricingMode === 'fixed_qar' && data.basePriceQar !== null) {
+  productJsonLd.offers = {
+    '@type': 'Offer',
+    priceCurrency: 'QAR',
+    price: data.basePriceQar,
+    availability:
+      data.availability === 'unavailable'
+        ? 'https://schema.org/OutOfStock'
+        : 'https://schema.org/InStock',
+    url: canonicalUrl,
+  };
+}
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${data.name[locale]} — ${t.meta.siteName}`}
+  description={data.description[locale]}
+  ogImage={`/media/${primaryImage.mediaKey}-1200.jpg`}
+  structuredData={productJsonLd}
+>
+  <section class="pdp-section">
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: t.pdp.breadcrumbHome, href: `/${locale}/` },
+          { label: t.pdp.breadcrumbCollections, href: getCategoryUrl(locale, 'all') },
+          { label: categoryName, href: getCategoryUrl(locale, data.primaryCategory) },
+          { label: data.name[locale] },
+        ]}
+      />
+
+      <div class="pdp-layout">
+        <div class="pdp-gallery">
+          <div class="pdp-stage" id="pdp-stage">
+            <ResponsiveImage
+              mediaKey={primaryImage.mediaKey}
+              alt={primaryImage.alt[locale]}
+              width={primaryImage.width}
+              height={primaryImage.height}
+              sizes="(max-width: 899px) 94vw, 48vw"
+              priority={true}
+              imgClass="pdp-main-img"
+            />
+          </div>
+
+          {
+            data.images.length > 1 && (
+              <div class="pdp-thumbs" role="group" aria-label={t.pdp.galleryThumbnailPrefix}>
+                {data.images.map((img, idx) => (
+                  <button
+                    type="button"
+                    class={`pdp-thumb${idx === 0 ? ' is-selected' : ''}`}
+                    data-media-key={img.mediaKey}
+                    data-alt={img.alt[locale]}
+                    data-width={String(img.width)}
+                    data-height={String(img.height)}
+                    aria-label={`${t.pdp.galleryThumbnailPrefix} ${idx + 1}`}
+                    aria-pressed={idx === 0 ? 'true' : 'false'}
+                  >
+                    <ResponsiveImage
+                      mediaKey={img.mediaKey}
+                      alt=""
+                      width={img.width}
+                      height={img.height}
+                      sizes="96px"
+                      imgClass="pdp-thumb-img"
+                    />
+                  </button>
+                ))}
+              </div>
+            )
+          }
+        </div>
+
+        <div
+          class="pdp-info"
+          id="pdp-enquiry-panel"
+          data-locale={locale}
+          data-sku={data.sku}
+          data-name={data.name[locale]}
+          data-url={canonicalUrl}
+          data-phone={BUSINESS_CONFIG.concierge.whatsappDigits}
+          data-template={t.whatsappTemplates.productEnquiry}
+          data-default-variant={locale === 'ar' ? 'النسخة القياسية' : 'Standard'}
+          data-default-notes={locale === 'ar' ? 'لا يوجد' : 'None'}
+        >
+          <p class="pdp-cat-label">{categoryName}</p>
+          <h1>{data.name[locale]}</h1>
+          <p class="pdp-price tabular-nums">{priceText}</p>
+          <p class="pdp-desc prose-measure">{data.description[locale]}</p>
+
+          <dl class="pdp-specs">
+            <div class="pdp-spec-row">
+              <dt>{t.pdp.skuLabel}</dt>
+              <dd class="tabular-nums">{data.sku}</dd>
+            </div>
+            <div class="pdp-spec-row">
+              <dt>{t.pdp.categoryLabel}</dt>
+              <dd>
+                <a href={getCategoryUrl(locale, data.primaryCategory)}>{categoryName}</a>
+              </dd>
+            </div>
+            <div class="pdp-spec-row">
+              <dt>{t.pdp.packagingLabel}</dt>
+              <dd>{packagingText}</dd>
+            </div>
+            <div class="pdp-spec-row">
+              <dt>{t.pdp.availabilityLabel}</dt>
+              <dd>{availabilityText}</dd>
+            </div>
+            <div class="pdp-spec-row">
+              <dt>{t.pdp.leadTimeLabel}</dt>
+              <dd>{leadTimeText}</dd>
+            </div>
+            {
+              data.occasions.length > 0 && (
+                <div class="pdp-spec-row">
+                  <dt>{t.pdp.occasionsLabel}</dt>
+                  <dd class="pdp-occasion-links">
+                    {data.occasions.map((occId, i) => (
+                      <>
+                        <a href={getOccasionUrl(locale, occId)}>{t.occasions[occId].name}</a>
+                        {i < data.occasions.length - 1 ? <span> · </span> : null}
+                      </>
+                    ))}
+                  </dd>
+                </div>
+              )
+            }
+          </dl>
+
+          <div class="pdp-config">
+            {
+              data.variants.length > 0 && (
+                <div class="pdp-field">
+                  <label for="pdp-variant" class="pdp-field-label">
+                    {t.pdp.variantLabel}
+                  </label>
+                  <select id="pdp-variant" class="pdp-control">
+                    {data.variants.map((variant) => (
+                      <option value={variant.label[locale]}>{variant.label[locale]}</option>
+                    ))}
+                  </select>
+                </div>
+              )
+            }
+
+            <div class="pdp-field">
+              <label for="pdp-topper" class="pdp-field-label">
+                {t.pdp.topperLabel}
+              </label>
+              <select id="pdp-topper" class="pdp-control">
+                {
+                  t.pdp.topperChoices.map((choice) => (
+                    <option value={choice.label}>{choice.label}</option>
+                  ))
+                }
+              </select>
+            </div>
+
+            <div class="pdp-field">
+              <label for="pdp-notes" class="pdp-field-label">
+                {t.pdp.notesLabel}
+              </label>
+              <textarea
+                id="pdp-notes"
+                rows="3"
+                class="pdp-control pdp-textarea"
+                placeholder={t.pdp.notesPlaceholder}></textarea>
+            </div>
+
+            <a
+              id="pdp-whatsapp-btn"
+              href={initialWhatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-concierge pdp-enquire-btn"
+            >
+              <Icon name="message" size={18} />
+              <span>{t.pdp.enquireButton}</span>
+            </a>
+
+            <p class="pdp-helper">{t.pdp.enquireHelper}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    relatedProducts.length > 0 && (
+      <section class="section section-sand" aria-labelledby="heading-related">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="heading-related">{t.pdp.complementaryTitle}</h2>
+            <a href={getCategoryUrl(locale, data.primaryCategory)} class="related-more">
+              {categoryName}
+            </a>
+          </div>
+          <div class="product-grid">
+            {relatedProducts.map((item) => (
+              <ProductCard product={item} locale={locale} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<script>
+  function initProductDetailPage() {
+    // 1. Multi-angle gallery switcher
+    const stage = document.getElementById('pdp-stage');
+    const thumbButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.pdp-thumb'));
+
+    if (stage && thumbButtons.length > 0) {
+      const sources = stage.querySelectorAll('source');
+      const mainImg = stage.querySelector('img');
+
+      thumbButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const mediaKey = btn.dataset.mediaKey;
+          const alt = btn.dataset.alt || '';
+          const width = btn.dataset.width;
+          const height = btn.dataset.height;
+          if (!mediaKey || !mainImg) return;
+
+          if (sources[0]) {
+            sources[0].srcset = `/media/${mediaKey}-400.avif 400w, /media/${mediaKey}-800.avif 800w, /media/${mediaKey}-1200.avif 1200w`;
+          }
+          if (sources[1]) {
+            sources[1].srcset = `/media/${mediaKey}-400.webp 400w, /media/${mediaKey}-800.webp 800w, /media/${mediaKey}-1200.webp 1200w`;
+          }
+          mainImg.src = `/media/${mediaKey}-800.jpg`;
+          mainImg.srcset = `/media/${mediaKey}-400.jpg 400w, /media/${mediaKey}-800.jpg 800w, /media/${mediaKey}-1200.jpg 1200w`;
+          mainImg.alt = alt;
+          if (width) mainImg.width = Number(width);
+          if (height) mainImg.height = Number(height);
+
+          thumbButtons.forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('is-selected', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+        });
+      });
+    }
+
+    // 2. Dynamic WhatsApp concierge URL builder
+    const panel = document.getElementById('pdp-enquiry-panel');
+    const whatsappBtn = document.getElementById('pdp-whatsapp-btn') as HTMLAnchorElement | null;
+    if (!panel || !whatsappBtn) return;
+
+    const locale = (panel.dataset.locale === 'ar' ? 'ar' : 'en') as 'en' | 'ar';
+    const sku = panel.dataset.sku || '';
+    const name = panel.dataset.name || '';
+    const url = panel.dataset.url || window.location.href;
+    const phone = panel.dataset.phone || '';
+    const template = panel.dataset.template || '';
+    const defaultVariant = panel.dataset.defaultVariant || 'Standard';
+    const defaultNotes = panel.dataset.defaultNotes || 'None';
+
+    const variantEl = document.getElementById('pdp-variant') as HTMLSelectElement | null;
+    const topperEl = document.getElementById('pdp-topper') as HTMLSelectElement | null;
+    const notesEl = document.getElementById('pdp-notes') as HTMLTextAreaElement | null;
+
+    function refreshWhatsAppLink() {
+      const variantVal = variantEl ? variantEl.value : defaultVariant;
+      const topperVal = topperEl ? topperEl.value : '';
+      const notesVal = notesEl && notesEl.value.trim() ? notesEl.value.trim() : defaultNotes;
+
+      const text = template
+        .replace('{name}', name)
+        .replace('{sku}', sku)
+        .replace('{variant}', variantVal)
+        .replace('{topper}', topperVal)
+        .replace('{notes}', notesVal)
+        .replace('{url}', url);
+
+      whatsappBtn!.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    }
+
+    variantEl?.addEventListener('change', refreshWhatsAppLink);
+    topperEl?.addEventListener('change', refreshWhatsAppLink);
+    notesEl?.addEventListener('input', refreshWhatsAppLink);
+
+    whatsappBtn.addEventListener('click', () => {
+      refreshWhatsAppLink();
+      if (typeof window.valorTrack === 'function') {
+        window.valorTrack('whatsapp_enquiry_click', {
+          locale,
+          sku,
+          sourceSurface: 'pdp',
+        });
+      }
+    });
+
+    refreshWhatsAppLink();
+  }
+
+  initProductDetailPage();
+</script>
+
+<style>
+  .pdp-section {
+    padding-block: var(--space-8) var(--space-16);
+  }
+
+  .pdp-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .pdp-layout {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: var(--space-12);
+    }
+  }
+
+  .pdp-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .pdp-stage {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    background-color: var(--color-surface-sand);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  .pdp-stage :global(.pdp-main-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pdp-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .pdp-thumb {
+    width: 76px;
+    aspect-ratio: 4 / 5;
+    padding: 0;
+    border: 2px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background-color: var(--color-surface-white);
+    cursor: pointer;
+    transition: border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .pdp-thumb:hover,
+  .pdp-thumb.is-selected {
+    border-color: var(--color-terracotta);
+  }
+
+  .pdp-thumb :global(.pdp-thumb-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pdp-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .pdp-cat-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-terracotta);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  [dir='rtl'] .pdp-cat-label {
+    letter-spacing: 0;
+  }
+
+  .pdp-price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-ink-obsidian);
+  }
+
+  .pdp-desc {
+    color: var(--color-ink-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .pdp-specs {
+    display: flex;
+    flex-direction: column;
+    border-block: 1px solid var(--color-border-hairline);
+    padding-block: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .pdp-spec-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2);
+    font-size: 0.9375rem;
+  }
+
+  .pdp-spec-row dt {
+    color: var(--color-ink-muted);
+    font-weight: 500;
+  }
+
+  .pdp-spec-row dd {
+    color: var(--color-ink-obsidian);
+    font-weight: 600;
+    text-align: end;
+  }
+
+  .pdp-spec-row a {
+    color: var(--color-terracotta);
+    text-decoration: none;
+  }
+
+  .pdp-spec-row a:hover {
+    text-decoration: underline;
+  }
+
+  .pdp-config {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+  }
+
+  .pdp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .pdp-field-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink-obsidian);
+  }
+
+  .pdp-control {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-canvas-ivory);
+    font-size: 0.9375rem;
+  }
+
+  .pdp-textarea {
+    resize: vertical;
+    min-height: 82px;
+  }
+
+  .pdp-enquire-btn {
+    width: 100%;
+    padding-block: 14px;
+    font-size: 1rem;
+  }
+
+  .pdp-helper {
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+    line-height: 1.55;
+  }
+
+  .related-more {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-terracotta);
+    text-decoration: none;
+  }
+
+  .related-more:hover {
+    text-decoration: underline;
+  }
+</style>

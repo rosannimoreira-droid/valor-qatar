@@ -1,0 +1,85 @@
+:root {
+  /* Valor Qatar Authentic Packaging Palette (WCAG 2.2 AA Verified) */
+  --color-canvas-ivory: #faf7f2;
+  --color-surface-white: #ffffff;
+  --color-surface-sand: #f1eae0;
+  --color-border-hairline: #ddd4c8;
+  --color-border-strong: #b9ac9c;
+
+  --color-ink-obsidian: #1c1815;
+  --color-ink-muted: #595149;
+  --color-ink-on-dark: #faf7f2;
+  --color-ink-silver-dark: #c7beb4;
+
+  --color-terracotta: #963e28;
+  --color-terracotta-hover: #7d321f;
+  --color-terracotta-tint: #f7eae6;
+
+  --color-heritage-slate: #263846;
+  --color-qatar-maroon: #6b132c;
+  --color-cacao-taupe: #6b5446;
+  --color-foil-gold-text: #7d5c1b;
+  --color-foil-gold-accent: #b89242;
+
+  --color-concierge-green: #136b36;
+  --color-concierge-green-hover: #0e5229;
+
+  /* Typography Families */
+  --font-display-en: 'Cormorant Garamond', Georgia, serif;
+  --font-sans-en: 'Libre Franklin', system-ui, -apple-system, sans-serif;
+  --font-display-ar: 'Amiri', Georgia, serif;
+  --font-sans-ar: 'IBM Plex Sans Arabic', 'Cairo', Tahoma, sans-serif;
+
+  --font-display: var(--font-display-en);
+  --font-sans: var(--font-sans-en);
+
+  /* Radii (Architectural Box Precision) */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  /* 8px Modular Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  /* Layout */
+  --container-max: 1360px;
+  --gutter-inline: 16px;
+  --header-height: 76px;
+
+  /* Depth */
+  --shadow-hover: 0 8px 24px -6px rgba(28, 24, 21, 0.08);
+  --shadow-modal: 0 20px 50px -12px rgba(28, 24, 21, 0.22);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 180ms;
+  --duration-base: 260ms;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --gutter-inline: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter-inline: 40px;
+  }
+}
+
+[dir='rtl'] {
+  --font-display: var(--font-display-ar);
+  --font-sans: var(--font-sans-ar);
+}

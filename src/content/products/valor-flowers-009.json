@@ -1,0 +1,77 @@
+{
+  "id": "valor-flowers-009",
+  "sku": "VLR-FLO-009",
+  "slug": {
+    "en": "grand-crimson-rose-hand-bouquet-009",
+    "ar": "grand-crimson-rose-hand-bouquet-009"
+  },
+  "name": {
+    "en": "Grand Crimson Rose Hand Bouquet",
+    "ar": "باقة الورد الأحمر الملكية الكبيرة"
+  },
+  "shortDescription": {
+    "en": "Generous hand-tied bouquet of crimson roses in matte charcoal architectural wrap.",
+    "ar": "باقة يد كبيرة من الورد الأحمر الطبيعي بتغليف أسود غير لامع أنيق."
+  },
+  "description": {
+    "en": "Freshly arranged seasonal blooms styled in boutique wrapping or glass vessels. Flower shades confirmed upon enquiry.",
+    "ar": "تنسيق زهور طبيعية مختارة بتغليف أنيق أو فازات زجاجية، مع تأكيد الألوان والتوفر عبر الكونسيرج."
+  },
+  "primaryCategory": "flowers",
+  "collections": ["floral-wrap"],
+  "occasions": ["everyday-gifting"],
+  "images": [
+    {
+      "id": "VLR-FLO-009-IMG-01",
+      "masterPath": "02_Fresh_Flowers_and_Bouquets/621909096_18082205354463760_1883165260324589302_n.jpg",
+      "mediaKey": "vlr-flo-009-01-621909096",
+      "role": "primary",
+      "alt": {
+        "en": "Grand Crimson Rose Hand Bouquet — view 1",
+        "ar": "باقة الورد الأحمر الملكية الكبيرة — زاوية 1"
+      },
+      "width": 1440,
+      "height": 1694
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "floral-wrap"
+  },
+  "featured": true,
+  "sortWeight": 5,
+  "seo": {
+    "title": {
+      "en": "Grand Crimson Rose Hand Bouquet | Valor Qatar",
+      "ar": "باقة الورد الأحمر الملكية الكبيرة | فالور قطر"
+    },
+    "description": {
+      "en": "Generous hand-tied bouquet of crimson roses in matte charcoal architectural wrap.",
+      "ar": "باقة يد كبيرة من الورد الأحمر الطبيعي بتغليف أسود غير لامع أنيق."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Grand Crimson Rose Hand Bouquet",
+      "ar": "باقة الورد الأحمر الملكية الكبيرة"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

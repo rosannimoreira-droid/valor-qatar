@@ -1,0 +1,77 @@
+{
+  "id": "valor-flowers-011",
+  "sku": "VLR-FLO-011",
+  "slug": {
+    "en": "flowers-011-627537167",
+    "ar": "flowers-011-627537167"
+  },
+  "name": {
+    "en": "Valor Fresh Floral Arrangement (VLR-FLO-011)",
+    "ar": "تنسيق زهور طبيعية من فالور (VLR-FLO-011)"
+  },
+  "shortDescription": {
+    "en": "Freshly arranged seasonal blooms styled in boutique wrapping or glass vessels. Flower shades confirmed upon enquiry.",
+    "ar": "تنسيق زهور طبيعية مختارة بتغليف أنيق أو فازات زجاجية، مع تأكيد الألوان والتوفر عبر الكونسيرج."
+  },
+  "description": {
+    "en": "Freshly arranged seasonal blooms styled in boutique wrapping or glass vessels. Flower shades confirmed upon enquiry.",
+    "ar": "تنسيق زهور طبيعية مختارة بتغليف أنيق أو فازات زجاجية، مع تأكيد الألوان والتوفر عبر الكونسيرج."
+  },
+  "primaryCategory": "flowers",
+  "collections": ["floral-wrap"],
+  "occasions": ["everyday-gifting"],
+  "images": [
+    {
+      "id": "VLR-FLO-011-IMG-01",
+      "masterPath": "02_Fresh_Flowers_and_Bouquets/627537167_18427116331184569_8497406654998239878_n.jpg",
+      "mediaKey": "vlr-flo-011-01-627537167",
+      "role": "primary",
+      "alt": {
+        "en": "Valor Fresh Floral Arrangement (VLR-FLO-011) — view 1",
+        "ar": "تنسيق زهور طبيعية من فالور (VLR-FLO-011) — زاوية 1"
+      },
+      "width": 1440,
+      "height": 1645
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "floral-wrap"
+  },
+  "featured": false,
+  "sortWeight": 111,
+  "seo": {
+    "title": {
+      "en": "Valor Fresh Floral Arrangement (VLR-FLO-011) | Valor Qatar",
+      "ar": "تنسيق زهور طبيعية من فالور (VLR-FLO-011) | فالور قطر"
+    },
+    "description": {
+      "en": "Freshly arranged seasonal blooms styled in boutique wrapping or glass vessels. Flower shades confirmed upon enquiry.",
+      "ar": "تنسيق زهور طبيعية مختارة بتغليف أنيق أو فازات زجاجية، مع تأكيد الألوان والتوفر عبر الكونسيرج."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Valor Fresh Floral Arrangement (VLR-FLO-011)",
+      "ar": "تنسيق زهور طبيعية من فالور (VLR-FLO-011)"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

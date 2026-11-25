@@ -1,0 +1,89 @@
+{
+  "id": "valor-stands-towers-039",
+  "sku": "VLR-STA-039",
+  "slug": {
+    "en": "stands-towers-039-624066562",
+    "ar": "stands-towers-039-624066562"
+  },
+  "name": {
+    "en": "Valor Majlis Hospitality Stand or Tower (VLR-STA-039)",
+    "ar": "منصة أو برج ضيافة للمجالس من فالور (VLR-STA-039)"
+  },
+  "shortDescription": {
+    "en": "Elevated pedestal cone tower or multi-tier hospitality stand built as a reception centerpiece.",
+    "ar": "برج تقديم هرمي أو منصة ضيافة متعددة الأدوار مصممة لتصدر طاولات الاستقبال والمجالس."
+  },
+  "description": {
+    "en": "Elevated pedestal cone tower or multi-tier hospitality stand built as a reception centerpiece.",
+    "ar": "برج تقديم هرمي أو منصة ضيافة متعددة الأدوار مصممة لتصدر طاولات الاستقبال والمجالس."
+  },
+  "primaryCategory": "stands-towers",
+  "collections": ["porcelain-white"],
+  "occasions": ["majlis-weddings"],
+  "images": [
+    {
+      "id": "VLR-STA-039-IMG-01",
+      "masterPath": "08_Hospitality_Stands_and_Towers/624066562_18073474685120150_2416659322663694839_n.jpg",
+      "mediaKey": "vlr-sta-039-01-624066562",
+      "role": "primary",
+      "alt": {
+        "en": "Valor Majlis Hospitality Stand or Tower (VLR-STA-039) — view 1",
+        "ar": "منصة أو برج ضيافة للمجالس من فالور (VLR-STA-039) — زاوية 1"
+      },
+      "width": 1440,
+      "height": 1800
+    },
+    {
+      "id": "VLR-STA-039-IMG-02",
+      "masterPath": "08_Hospitality_Stands_and_Towers/626885137_18096196594935106_2234757474891543498_n.jpg",
+      "mediaKey": "vlr-sta-039-02-626885137",
+      "role": "angle",
+      "alt": {
+        "en": "Valor Majlis Hospitality Stand or Tower (VLR-STA-039) — view 2",
+        "ar": "منصة أو برج ضيافة للمجالس من فالور (VLR-STA-039) — زاوية 2"
+      },
+      "width": 1440,
+      "height": 1800
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "porcelain-white"
+  },
+  "featured": false,
+  "sortWeight": 139,
+  "seo": {
+    "title": {
+      "en": "Valor Majlis Hospitality Stand or Tower (VLR-STA-039) | Valor Qatar",
+      "ar": "منصة أو برج ضيافة للمجالس من فالور (VLR-STA-039) | فالور قطر"
+    },
+    "description": {
+      "en": "Elevated pedestal cone tower or multi-tier hospitality stand built as a reception centerpiece.",
+      "ar": "برج تقديم هرمي أو منصة ضيافة متعددة الأدوار مصممة لتصدر طاولات الاستقبال والمجالس."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Valor Majlis Hospitality Stand or Tower (VLR-STA-039)",
+      "ar": "منصة أو برج ضيافة للمجالس من فالور (VLR-STA-039)"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

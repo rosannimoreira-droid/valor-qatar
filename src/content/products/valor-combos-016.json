@@ -1,0 +1,77 @@
+{
+  "id": "valor-combos-016",
+  "sku": "VLR-COM-016",
+  "slug": {
+    "en": "combos-016-706020533",
+    "ar": "combos-016-706020533"
+  },
+  "name": {
+    "en": "Valor Flower & Confectionery Ensemble (VLR-COM-016)",
+    "ar": "تنسيق ورد وشوكولاتة من فالور (VLR-COM-016)"
+  },
+  "shortDescription": {
+    "en": "Coordinated floral and confectionery pairing engineered for hospital visits, housewarmings and formal gifting.",
+    "ar": "تنسيق يجمع بين الورود الطبيعية والحلويات الفاخرة لزيارات التهنئة والمناسبات الخاصة."
+  },
+  "description": {
+    "en": "Coordinated floral and confectionery pairing engineered for hospital visits, housewarmings and formal gifting.",
+    "ar": "تنسيق يجمع بين الورود الطبيعية والحلويات الفاخرة لزيارات التهنئة والمناسبات الخاصة."
+  },
+  "primaryCategory": "combos",
+  "collections": ["acrylic"],
+  "occasions": ["everyday-gifting", "majlis-weddings"],
+  "images": [
+    {
+      "id": "VLR-COM-016-IMG-01",
+      "masterPath": "03_Flowers_and_Chocolate_Combos/706020533_18114351025848346_8675908586884761952_n.jpg",
+      "mediaKey": "vlr-com-016-01-706020533",
+      "role": "primary",
+      "alt": {
+        "en": "Valor Flower & Confectionery Ensemble (VLR-COM-016) — view 1",
+        "ar": "تنسيق ورد وشوكولاتة من فالور (VLR-COM-016) — زاوية 1"
+      },
+      "width": 4096,
+      "height": 2731
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "acrylic"
+  },
+  "featured": false,
+  "sortWeight": 116,
+  "seo": {
+    "title": {
+      "en": "Valor Flower & Confectionery Ensemble (VLR-COM-016) | Valor Qatar",
+      "ar": "تنسيق ورد وشوكولاتة من فالور (VLR-COM-016) | فالور قطر"
+    },
+    "description": {
+      "en": "Coordinated floral and confectionery pairing engineered for hospital visits, housewarmings and formal gifting.",
+      "ar": "تنسيق يجمع بين الورود الطبيعية والحلويات الفاخرة لزيارات التهنئة والمناسبات الخاصة."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Valor Flower & Confectionery Ensemble (VLR-COM-016)",
+      "ar": "تنسيق ورد وشوكولاتة من فالور (VLR-COM-016)"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

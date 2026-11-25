@@ -1,0 +1,77 @@
+{
+  "id": "valor-seasonal-013",
+  "sku": "VLR-SEA-013",
+  "slug": {
+    "en": "qatar-national-day-maroon-white-cone-tower-013",
+    "ar": "qatar-national-day-maroon-white-cone-tower-013"
+  },
+  "name": {
+    "en": "Qatar National Day Maroon & White Cone Tower",
+    "ar": "برج اليوم الوطني القطري — الأدعم والأبيض"
+  },
+  "shortDescription": {
+    "en": "Maroon and white cone presentation crowned with the Qatari flag on a Valor pedestal.",
+    "ar": "هرم تقديم بألوان العلم القطري العنابي والأبيض متوج بالراية الوطنية على قاعدة فالور."
+  },
+  "description": {
+    "en": "Limited seasonal presentation created for Qatari holidays and family milestones.",
+    "ar": "تشكيلة موسمية مخصصة للأعياد الوطنية والدينية والمناسبات العائلية في قطر."
+  },
+  "primaryCategory": "seasonal",
+  "collections": ["seasonal-box"],
+  "occasions": ["qatar-national-day", "ramadan-eid"],
+  "images": [
+    {
+      "id": "VLR-SEA-013-IMG-01",
+      "masterPath": "07_Seasonal_and_Occasions/625026040_18078082976597359_6735122471711371804_n.jpg",
+      "mediaKey": "vlr-sea-013-01-625026040",
+      "role": "primary",
+      "alt": {
+        "en": "Qatar National Day Maroon & White Cone Tower — view 1",
+        "ar": "برج اليوم الوطني القطري — الأدعم والأبيض — زاوية 1"
+      },
+      "width": 1440,
+      "height": 1440
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "seasonal",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "seasonal-box"
+  },
+  "featured": true,
+  "sortWeight": 8,
+  "seo": {
+    "title": {
+      "en": "Qatar National Day Maroon & White Cone Tower | Valor Qatar",
+      "ar": "برج اليوم الوطني القطري — الأدعم والأبيض | فالور قطر"
+    },
+    "description": {
+      "en": "Maroon and white cone presentation crowned with the Qatari flag on a Valor pedestal.",
+      "ar": "هرم تقديم بألوان العلم القطري العنابي والأبيض متوج بالراية الوطنية على قاعدة فالور."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Qatar National Day Maroon & White Cone Tower",
+      "ar": "برج اليوم الوطني القطري — الأدعم والأبيض"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

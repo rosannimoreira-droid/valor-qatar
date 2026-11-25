@@ -1,0 +1,47 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProductCatalogueBrowser from '@/components/ProductCatalogueBrowser.astro';
+import { CATEGORY_IDS, type CategoryId } from '@/content/config';
+import { getDictionary, type Locale } from '@/i18n';
+import { getPublishedProducts } from '@/lib/catalog';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const paths: Array<{ params: { locale: Locale; category: CategoryId } }> = [];
+  for (const locale of ['en', 'ar'] as const) {
+    for (const category of CATEGORY_IDS) {
+      paths.push({ params: { locale, category } });
+    }
+  }
+  return paths;
+};
+
+const locale = (Astro.params.locale === 'ar' ? 'ar' : 'en') as Locale;
+const category = Astro.params.category as CategoryId;
+const t = getDictionary(locale);
+
+const allProducts = await getPublishedProducts();
+const products = allProducts.filter((p) => p.data.primaryCategory === category);
+const catInfo = t.categories[category];
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${catInfo.name} — ${t.meta.siteName}`}
+  description={catInfo.shortDesc}
+>
+  <ProductCatalogueBrowser
+    locale={locale}
+    products={products}
+    title={catInfo.name}
+    lead={catInfo.shortDesc}
+    breadcrumbs={[
+      { label: t.pdp.breadcrumbHome, href: `/${locale}/` },
+      { label: t.pdp.breadcrumbCollections, href: `/${locale}/collections/` },
+      { label: catInfo.name },
+    ]}
+    activeCategory={category}
+    showCategoryTabs={true}
+    showOccasionFilter={true}
+  />
+</BaseLayout>

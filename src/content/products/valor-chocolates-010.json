@@ -1,0 +1,89 @@
+{
+  "id": "valor-chocolates-010",
+  "sku": "VLR-CHO-010",
+  "slug": {
+    "en": "terracotta-signature-box-rolled-wafer-cigars-010",
+    "ar": "terracotta-signature-box-rolled-wafer-cigars-010"
+  },
+  "name": {
+    "en": "Terracotta Signature Box — Rolled Wafer Cigars",
+    "ar": "صندوق التراكوتا المميز — سجائر الويفر بالشوكولاتة"
+  },
+  "shortDescription": {
+    "en": "Valor terracotta lattice box filled with coated chocolate wafer rolls.",
+    "ar": "صندوق فالور بلون التراكوتا المزخرف محشو بأصابع الويفر المغطاة بالشوكولاتة."
+  },
+  "description": {
+    "en": "Handcrafted chocolate assortment prepared for gifting and hospitality. Confirm exact piece count and availability via concierge.",
+    "ar": "تشكيلة شوكولاتة مختارة معدة للضيافة والإهداء. يمكن تأكيد التفاصيل والتوفر مباشرة عبر الكونسيرج."
+  },
+  "primaryCategory": "chocolates",
+  "collections": ["terracotta"],
+  "occasions": ["everyday-gifting", "majlis-weddings"],
+  "images": [
+    {
+      "id": "VLR-CHO-010-IMG-01",
+      "masterPath": "01_Chocolates_and_Pralines/560484380_18091170199848346_5375542589293012042_n.jpg",
+      "mediaKey": "vlr-cho-010-01-560484380",
+      "role": "primary",
+      "alt": {
+        "en": "Terracotta Signature Box — Rolled Wafer Cigars — view 1",
+        "ar": "صندوق التراكوتا المميز — سجائر الويفر بالشوكولاتة — زاوية 1"
+      },
+      "width": 1066,
+      "height": 1421
+    },
+    {
+      "id": "VLR-CHO-010-IMG-02",
+      "masterPath": "01_Chocolates_and_Pralines/704914325_18114427933848346_6737543058078174638_n.jpg",
+      "mediaKey": "vlr-cho-010-02-704914325",
+      "role": "angle",
+      "alt": {
+        "en": "Terracotta Signature Box — Rolled Wafer Cigars — view 2",
+        "ar": "صندوق التراكوتا المميز — سجائر الويفر بالشوكولاتة — زاوية 2"
+      },
+      "width": 1066,
+      "height": 1421
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "terracotta"
+  },
+  "featured": true,
+  "sortWeight": 2,
+  "seo": {
+    "title": {
+      "en": "Terracotta Signature Box — Rolled Wafer Cigars | Valor Qatar",
+      "ar": "صندوق التراكوتا المميز — سجائر الويفر بالشوكولاتة | فالور قطر"
+    },
+    "description": {
+      "en": "Valor terracotta lattice box filled with coated chocolate wafer rolls.",
+      "ar": "صندوق فالور بلون التراكوتا المزخرف محشو بأصابع الويفر المغطاة بالشوكولاتة."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Terracotta Signature Box — Rolled Wafer Cigars",
+      "ar": "صندوق التراكوتا المميز — سجائر الويفر بالشوكولاتة"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

@@ -1,0 +1,77 @@
+{
+  "id": "valor-seasonal-001",
+  "sku": "VLR-SEA-001",
+  "slug": {
+    "en": "ramadan-calligraphy-hexagonal-hospitality-box-001",
+    "ar": "ramadan-calligraphy-hexagonal-hospitality-box-001"
+  },
+  "name": {
+    "en": "Ramadan Calligraphy Hexagonal Hospitality Box",
+    "ar": "صندوق الضيافة السداسي لشهر رمضان"
+  },
+  "shortDescription": {
+    "en": "Compartmentalized white and gold box with Ramadan calligraphy, stuffed dates and sweets.",
+    "ar": "صندوق سداسي مقسّم باللون الأبيض والذهبي بعبارة رمضان مع التمور والحلويات."
+  },
+  "description": {
+    "en": "Limited seasonal presentation created for Qatari holidays and family milestones.",
+    "ar": "تشكيلة موسمية مخصصة للأعياد الوطنية والدينية والمناسبات العائلية في قطر."
+  },
+  "primaryCategory": "seasonal",
+  "collections": ["porcelain-white"],
+  "occasions": ["majlis-weddings", "ramadan-eid"],
+  "images": [
+    {
+      "id": "VLR-SEA-001-IMG-01",
+      "masterPath": "07_Seasonal_and_Occasions/478332624_18068350180848346_3785530466858521824_n.jpg",
+      "mediaKey": "vlr-sea-001-01-478332624",
+      "role": "primary",
+      "alt": {
+        "en": "Ramadan Calligraphy Hexagonal Hospitality Box — view 1",
+        "ar": "صندوق الضيافة السداسي لشهر رمضان — زاوية 1"
+      },
+      "width": 1346,
+      "height": 1679
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "seasonal",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "porcelain-white"
+  },
+  "featured": true,
+  "sortWeight": 7,
+  "seo": {
+    "title": {
+      "en": "Ramadan Calligraphy Hexagonal Hospitality Box | Valor Qatar",
+      "ar": "صندوق الضيافة السداسي لشهر رمضان | فالور قطر"
+    },
+    "description": {
+      "en": "Compartmentalized white and gold box with Ramadan calligraphy, stuffed dates and sweets.",
+      "ar": "صندوق سداسي مقسّم باللون الأبيض والذهبي بعبارة رمضان مع التمور والحلويات."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Ramadan Calligraphy Hexagonal Hospitality Box",
+      "ar": "صندوق الضيافة السداسي لشهر رمضان"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

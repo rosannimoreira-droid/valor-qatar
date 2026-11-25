@@ -1,0 +1,212 @@
+---
+import { BUSINESS_CONFIG, buildWhatsAppUrl } from '@/config/business';
+import { getDictionary, type Locale } from '@/i18n';
+import ValorCrest from './ValorCrest.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const waUrl = buildWhatsAppUrl(t.whatsappTemplates.generalEnquiry);
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-brand-lockup">
+          <ValorCrest size={28} />
+          <span class="footer-wordmark">{locale === 'ar' ? 'فالور قطر' : 'VALOR QATAR'}</span>
+        </div>
+        <p class="footer-quote">
+          {
+            locale === 'ar'
+              ? BUSINESS_CONFIG.brand.packagingQuoteAr
+              : BUSINESS_CONFIG.brand.packagingQuoteEn
+          }
+        </p>
+        <p class="footer-location">
+          {locale === 'ar' ? BUSINESS_CONFIG.location.cityAr : BUSINESS_CONFIG.location.cityEn}
+        </p>
+        <a href={waUrl} target="_blank" rel="noopener noreferrer" class="footer-phone">
+          <bdi dir="ltr" class="tabular-nums">{BUSINESS_CONFIG.concierge.whatsappDisplay}</bdi>
+        </a>
+      </div>
+
+      <div>
+        <h2 class="footer-heading">{t.footer.collectionsHeading}</h2>
+        <ul class="footer-links">
+          <li><a href={`/${locale}/collections/chocolates/`}>{t.categories.chocolates.name}</a></li>
+          <li><a href={`/${locale}/collections/flowers/`}>{t.categories.flowers.name}</a></li>
+          <li><a href={`/${locale}/collections/combos/`}>{t.categories.combos.name}</a></li>
+          <li>
+            <a href={`/${locale}/collections/dates-sweets/`}>{t.categories['dates-sweets'].name}</a>
+          </li>
+          <li><a href={`/${locale}/collections/savoury/`}>{t.categories.savoury.name}</a></li>
+          <li>
+            <a href={`/${locale}/collections/stands-towers/`}
+              >{t.categories['stands-towers'].name}</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer-heading">{t.footer.occasionsHeading}</h2>
+        <ul class="footer-links">
+          <li>
+            <a href={`/${locale}/occasions/ramadan-eid/`}>{t.occasions['ramadan-eid'].name}</a>
+          </li>
+          <li>
+            <a href={`/${locale}/occasions/qatar-national-day/`}
+              >{t.occasions['qatar-national-day'].name}</a
+            >
+          </li>
+          <li>
+            <a href={`/${locale}/occasions/majlis-weddings/`}
+              >{t.occasions['majlis-weddings'].name}</a
+            >
+          </li>
+          <li><a href={`/${locale}/occasions/newborn/`}>{t.occasions.newborn.name}</a></li>
+          <li><a href={`/${locale}/occasions/graduation/`}>{t.occasions.graduation.name}</a></li>
+          <li><a href={`/${locale}/bespoke-hospitality/`}>{t.nav.bespoke}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer-heading">{t.footer.atelierHeading}</h2>
+        <ul class="footer-links">
+          <li><a href={`/${locale}/about/`}>{t.nav.about}</a></li>
+          <li><a href={`/${locale}/contact/`}>{t.nav.contact}</a></li>
+          <li><a href={`/${locale}/privacy-policy/`}>{t.footer.privacyLink}</a></li>
+          <li><a href={`/${locale}/allergen-care/`}>{t.footer.allergenLink}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>{t.footer.copyright}</p>
+      <p>{locale === 'ar' ? BUSINESS_CONFIG.location.cityAr : BUSINESS_CONFIG.location.cityEn}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-ink-obsidian);
+    color: var(--color-ink-silver-dark);
+    padding-block: var(--space-16) var(--space-8);
+    border-block-start: 1px solid #302a25;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding-block-end: var(--space-10);
+    border-block-end: 1px solid #302a25;
+  }
+
+  @media (min-width: 640px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    }
+  }
+
+  .footer-brand-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-ink-on-dark);
+    margin-block-end: var(--space-3);
+  }
+
+  .footer-wordmark {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-ink-on-dark);
+  }
+
+  [dir='rtl'] .footer-wordmark {
+    letter-spacing: 0;
+  }
+
+  .footer-quote {
+    font-size: 0.9375rem;
+    color: var(--color-ink-silver-dark);
+    max-width: 38ch;
+    margin-block-end: var(--space-4);
+  }
+
+  .footer-location {
+    font-size: 0.875rem;
+    color: var(--color-ink-on-dark);
+    font-weight: 600;
+  }
+
+  .footer-phone {
+    display: inline-block;
+    margin-block-start: var(--space-2);
+    color: var(--color-foil-gold-accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+
+  .footer-phone:hover {
+    text-decoration: underline;
+  }
+
+  .footer-heading {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-ink-on-dark);
+    margin-block-end: var(--space-4);
+  }
+
+  [dir='rtl'] .footer-heading {
+    letter-spacing: 0;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    color: var(--color-ink-silver-dark);
+    text-decoration: none;
+    font-size: 0.9375rem;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-ink-on-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .footer-bottom {
+    padding-block-start: var(--space-6);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-3);
+    font-size: 0.8125rem;
+    color: var(--color-ink-silver-dark);
+  }
+</style>

@@ -1,0 +1,37 @@
+---
+import { BUSINESS_CONFIG } from '@/config/business';
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{BUSINESS_CONFIG.brand.nameEn} — {BUSINESS_CONFIG.brand.taglineEn}</title>
+    <meta http-equiv="refresh" content="0; url=/en/" />
+    <link rel="canonical" href={`${BUSINESS_CONFIG.site.canonicalOrigin}/en/`} />
+    <link rel="alternate" hreflang="en" href={`${BUSINESS_CONFIG.site.canonicalOrigin}/en/`} />
+    <link rel="alternate" hreflang="ar" href={`${BUSINESS_CONFIG.site.canonicalOrigin}/ar/`} />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={`${BUSINESS_CONFIG.site.canonicalOrigin}/en/`}
+    />
+    <meta name="robots" content="noindex, follow" />
+  </head>
+  <body
+    style="margin:0;background:#FAF7F2;color:#1C1815;font-family:system-ui,-apple-system,sans-serif;display:grid;place-items:center;min-height:100vh;padding:2rem;text-align:center;"
+  >
+    <main>
+      <p style="font-size:1rem;line-height:1.6;">
+        Redirecting to <a href="/en/" style="color:#963E28;font-weight:600;"
+          >Valor Qatar (English)</a
+        >
+        &nbsp;|&nbsp;
+        <a href="/ar/" lang="ar" dir="rtl" style="color:#963E28;font-weight:600;"
+          >فالور قطر (العربية)</a
+        >
+      </p>
+    </main>
+  </body>
+</html>

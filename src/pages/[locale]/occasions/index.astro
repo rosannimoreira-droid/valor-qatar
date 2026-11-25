@@ -1,0 +1,146 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Icon from '@/components/Icon.astro';
+import { OCCASION_IDS } from '@/content/config';
+import { getDictionary, type Locale } from '@/i18n';
+import { getOccasionUrl, getPublishedProducts } from '@/lib/catalog';
+
+export const getStaticPaths: GetStaticPaths = () => [
+  { params: { locale: 'en' } },
+  { params: { locale: 'ar' } },
+];
+
+const locale = (Astro.params.locale === 'ar' ? 'ar' : 'en') as Locale;
+const t = getDictionary(locale);
+const isRtl = locale === 'ar';
+const allProducts = await getPublishedProducts();
+
+const cards = OCCASION_IDS.map((occId) => ({
+  id: occId,
+  name: t.occasions[occId].name,
+  shortDesc: t.occasions[occId].shortDesc,
+  href: getOccasionUrl(locale, occId),
+  count: allProducts.filter((p) => p.data.occasions.includes(occId)).length,
+}));
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t.home.occasionsTitle} — ${t.meta.siteName}`}
+  description={t.home.occasionsLead}
+>
+  <section class="page-head">
+    <div class="container">
+      <Breadcrumbs
+        items={[{ label: t.pdp.breadcrumbHome, href: `/${locale}/` }, { label: t.nav.occasions }]}
+      />
+      <h1>{t.home.occasionsTitle}</h1>
+      <p class="page-lead prose-measure">{t.home.occasionsLead}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container occasion-hub-grid">
+      {
+        cards.map((occ) => (
+          <a href={occ.href} class="occasion-hub-card">
+            <div class="occasion-hub-top">
+              <h2>{occ.name}</h2>
+              <span class="occasion-hub-count tabular-nums">{occ.count}</span>
+            </div>
+            <p class="occasion-hub-desc">{occ.shortDesc}</p>
+            <span class="occasion-hub-cta">
+              <span>{t.plp.viewProduct}</span>
+              <Icon name={isRtl ? 'arrow-left' : 'arrow-right'} size={16} />
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding-block: var(--space-8) var(--space-6);
+    background-color: var(--color-surface-sand);
+    border-block-end: 1px solid var(--color-border-hairline);
+  }
+
+  .page-lead {
+    margin-block-start: var(--space-3);
+    color: var(--color-ink-muted);
+    font-size: 1.0625rem;
+  }
+
+  .occasion-hub-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 640px) {
+    .occasion-hub-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .occasion-hub-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .occasion-hub-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .occasion-hub-card:hover {
+    border-color: var(--color-terracotta);
+    background-color: var(--color-terracotta-tint);
+  }
+
+  .occasion-hub-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .occasion-hub-top h2 {
+    font-size: 1.375rem;
+  }
+
+  .occasion-hub-count {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-terracotta);
+  }
+
+  .occasion-hub-desc {
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+    flex: 1 1 auto;
+  }
+
+  .occasion-hub-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-terracotta);
+  }
+</style>

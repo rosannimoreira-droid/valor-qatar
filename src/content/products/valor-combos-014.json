@@ -1,0 +1,77 @@
+{
+  "id": "valor-combos-014",
+  "sku": "VLR-COM-014",
+  "slug": {
+    "en": "porcelain-stepped-stand-red-roses-acrylic-tray-014",
+    "ar": "porcelain-stepped-stand-red-roses-acrylic-tray-014"
+  },
+  "name": {
+    "en": "Porcelain Stepped Stand — Red Roses & Acrylic Tray",
+    "ar": "منصة ضيافة مدرجة — ورد أحمر وصينية أكريليك"
+  },
+  "shortDescription": {
+    "en": "Two-tier white hospitality stand pairing fresh crimson roses with a covered chocolate tray.",
+    "ar": "منصة تقديم بيضاء من مستويين تجمع بين الورد الأحمر الطبيعي وصينية شوكولاتة مغطاة."
+  },
+  "description": {
+    "en": "Coordinated floral and confectionery pairing engineered for hospital visits, housewarmings and formal gifting.",
+    "ar": "تنسيق يجمع بين الورود الطبيعية والحلويات الفاخرة لزيارات التهنئة والمناسبات الخاصة."
+  },
+  "primaryCategory": "combos",
+  "collections": ["porcelain-white"],
+  "occasions": ["everyday-gifting", "majlis-weddings"],
+  "images": [
+    {
+      "id": "VLR-COM-014-IMG-01",
+      "masterPath": "03_Flowers_and_Chocolate_Combos/703676210_18114350830848346_1676090427846348751_n.jpg",
+      "mediaKey": "vlr-com-014-01-703676210",
+      "role": "primary",
+      "alt": {
+        "en": "Porcelain Stepped Stand — Red Roses & Acrylic Tray — view 1",
+        "ar": "منصة ضيافة مدرجة — ورد أحمر وصينية أكريليك — زاوية 1"
+      },
+      "width": 4096,
+      "height": 3751
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "porcelain-white"
+  },
+  "featured": true,
+  "sortWeight": 1,
+  "seo": {
+    "title": {
+      "en": "Porcelain Stepped Stand — Red Roses & Acrylic Tray | Valor Qatar",
+      "ar": "منصة ضيافة مدرجة — ورد أحمر وصينية أكريليك | فالور قطر"
+    },
+    "description": {
+      "en": "Two-tier white hospitality stand pairing fresh crimson roses with a covered chocolate tray.",
+      "ar": "منصة تقديم بيضاء من مستويين تجمع بين الورد الأحمر الطبيعي وصينية شوكولاتة مغطاة."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Porcelain Stepped Stand — Red Roses & Acrylic Tray",
+      "ar": "منصة ضيافة مدرجة — ورد أحمر وصينية أكريليك"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

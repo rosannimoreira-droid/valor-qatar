@@ -1,0 +1,77 @@
+{
+  "id": "valor-seasonal-035",
+  "sku": "VLR-SEA-035",
+  "slug": {
+    "en": "hala-bel-saif-branded-beach-cooler-035",
+    "ar": "hala-bel-saif-branded-beach-cooler-035"
+  },
+  "name": {
+    "en": "Hala Bel Saif Branded Beach Cooler",
+    "ar": "صندوق هلا بالصيف المبرد مع جوز الهند"
+  },
+  "shortDescription": {
+    "en": "Valor insulated summer cooler box styled with whole coconuts for coastal gatherings.",
+    "ar": "صندوق فالور المبرد للصيف منسق مع جوز الهند الطازج للتجمعات البحرية."
+  },
+  "description": {
+    "en": "Limited seasonal presentation created for Qatari holidays and family milestones.",
+    "ar": "تشكيلة موسمية مخصصة للأعياد الوطنية والدينية والمناسبات العائلية في قطر."
+  },
+  "primaryCategory": "seasonal",
+  "collections": ["seasonal-box"],
+  "occasions": ["everyday-gifting", "ramadan-eid", "summer"],
+  "images": [
+    {
+      "id": "VLR-SEA-035-IMG-01",
+      "masterPath": "07_Seasonal_and_Occasions/757212430_18120679564848346_445573617528363314_n.jpg",
+      "mediaKey": "vlr-sea-035-01-757212430",
+      "role": "primary",
+      "alt": {
+        "en": "Hala Bel Saif Branded Beach Cooler — view 1",
+        "ar": "صندوق هلا بالصيف المبرد مع جوز الهند — زاوية 1"
+      },
+      "width": 4096,
+      "height": 4096
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "seasonal",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "seasonal-box"
+  },
+  "featured": true,
+  "sortWeight": 11,
+  "seo": {
+    "title": {
+      "en": "Hala Bel Saif Branded Beach Cooler | Valor Qatar",
+      "ar": "صندوق هلا بالصيف المبرد مع جوز الهند | فالور قطر"
+    },
+    "description": {
+      "en": "Valor insulated summer cooler box styled with whole coconuts for coastal gatherings.",
+      "ar": "صندوق فالور المبرد للصيف منسق مع جوز الهند الطازج للتجمعات البحرية."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Hala Bel Saif Branded Beach Cooler",
+      "ar": "صندوق هلا بالصيف المبرد مع جوز الهند"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

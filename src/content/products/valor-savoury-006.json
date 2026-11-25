@@ -1,0 +1,77 @@
+{
+  "id": "valor-savoury-006",
+  "sku": "VLR-SAV-006",
+  "slug": {
+    "en": "imperial-warak-enab-pyramid-tower-006",
+    "ar": "imperial-warak-enab-pyramid-tower-006"
+  },
+  "name": {
+    "en": "Imperial Warak Enab Pyramid Tower",
+    "ar": "برج ورق العنب الملكي على قاعدة فالور"
+  },
+  "shortDescription": {
+    "en": "Sculpted vine-leaf pyramid garnished with herbs and served on a porcelain pedestal.",
+    "ar": "هرم ورق عنب منسق ومزين بالأعشاب الطازجة على قاعدة فالور الخزفية."
+  },
+  "description": {
+    "en": "Savoury hospitality arrangement prepared for receptions and family gatherings. Preparation lead time confirmed on enquiry.",
+    "ar": "تقديم موالح وورق عنب معدّ للاستقبالات والمجالس العائلية، مع تأكيد مدة التجهيز عند الطلب."
+  },
+  "primaryCategory": "savoury",
+  "collections": ["porcelain-white"],
+  "occasions": ["majlis-weddings"],
+  "images": [
+    {
+      "id": "VLR-SAV-006-IMG-01",
+      "masterPath": "05_Savory_and_Appetizers/486375675_18072216787848346_5859135043483141703_n.jpg",
+      "mediaKey": "vlr-sav-006-01-486375675",
+      "role": "primary",
+      "alt": {
+        "en": "Imperial Warak Enab Pyramid Tower — view 1",
+        "ar": "برج ورق العنب الملكي على قاعدة فالور — زاوية 1"
+      },
+      "width": 1440,
+      "height": 1795
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "porcelain-white"
+  },
+  "featured": true,
+  "sortWeight": 6,
+  "seo": {
+    "title": {
+      "en": "Imperial Warak Enab Pyramid Tower | Valor Qatar",
+      "ar": "برج ورق العنب الملكي على قاعدة فالور | فالور قطر"
+    },
+    "description": {
+      "en": "Sculpted vine-leaf pyramid garnished with herbs and served on a porcelain pedestal.",
+      "ar": "هرم ورق عنب منسق ومزين بالأعشاب الطازجة على قاعدة فالور الخزفية."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Imperial Warak Enab Pyramid Tower",
+      "ar": "برج ورق العنب الملكي على قاعدة فالور"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

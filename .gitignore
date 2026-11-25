@@ -1,6 +1,15 @@
 # Discarded, duplicate, and non-product assets
 _Discarded/
 
+# Node, Astro & Build Artifacts
+node_modules/
+dist/
+.astro/
+public/media/
+test-results/
+playwright-report/
+blob-report/
+
 # OS & editor files
 .DS_Store
 Thumbs.db

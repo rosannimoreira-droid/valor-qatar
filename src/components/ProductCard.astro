@@ -1,0 +1,39 @@
+---
+import { getDictionary, type Locale } from '@/i18n';
+import { formatProductPrice, getProductUrl, type ProductEntry } from '@/lib/catalog';
+import ResponsiveImage from './ResponsiveImage.astro';
+
+interface Props {
+  product: ProductEntry;
+  locale: Locale;
+  priority?: boolean;
+}
+
+const { product, locale, priority = false } = Astro.props;
+const t = getDictionary(locale);
+const href = getProductUrl(locale, product);
+const primaryImage = product.data.images[0];
+const catLabel = t.categories[product.data.primaryCategory].name;
+const priceText = formatProductPrice(product.data, locale);
+---
+
+<article class="product-card">
+  <a href={href} class="product-card-link">
+    <div class="product-card-media">
+      <ResponsiveImage
+        mediaKey={primaryImage.mediaKey}
+        alt={primaryImage.alt[locale]}
+        width={primaryImage.width}
+        height={primaryImage.height}
+        sizes="(max-width: 479px) 92vw, (max-width: 899px) 46vw, (max-width: 1199px) 30vw, 23vw"
+        priority={priority}
+        imgClass="product-card-img"
+      />
+    </div>
+    <div class="product-card-body">
+      <p class="product-card-cat">{catLabel}</p>
+      <h3 class="product-card-title">{product.data.name[locale]}</h3>
+      <p class="product-card-price tabular-nums">{priceText}</p>
+    </div>
+  </a>
+</article>

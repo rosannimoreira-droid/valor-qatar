@@ -1,0 +1,77 @@
+{
+  "id": "valor-seasonal-027",
+  "sku": "VLR-SEA-027",
+  "slug": {
+    "en": "seasonal-027-650737260",
+    "ar": "seasonal-027-650737260"
+  },
+  "name": {
+    "en": "Valor Seasonal Occasion Edition (VLR-SEA-027)",
+    "ar": "إصدار المناسبات الموسمية من فالور (VLR-SEA-027)"
+  },
+  "shortDescription": {
+    "en": "Limited seasonal presentation created for Qatari holidays and family milestones.",
+    "ar": "تشكيلة موسمية مخصصة للأعياد الوطنية والدينية والمناسبات العائلية في قطر."
+  },
+  "description": {
+    "en": "Limited seasonal presentation created for Qatari holidays and family milestones.",
+    "ar": "تشكيلة موسمية مخصصة للأعياد الوطنية والدينية والمناسبات العائلية في قطر."
+  },
+  "primaryCategory": "seasonal",
+  "collections": ["seasonal-box"],
+  "occasions": ["ramadan-eid"],
+  "images": [
+    {
+      "id": "VLR-SEA-027-IMG-01",
+      "masterPath": "07_Seasonal_and_Occasions/650737260_18106963912848346_2542889919331186858_n.jpg",
+      "mediaKey": "vlr-sea-027-01-650737260",
+      "role": "primary",
+      "alt": {
+        "en": "Valor Seasonal Occasion Edition (VLR-SEA-027) — view 1",
+        "ar": "إصدار المناسبات الموسمية من فالور (VLR-SEA-027) — زاوية 1"
+      },
+      "width": 1440,
+      "height": 1920
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "seasonal",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "seasonal-box"
+  },
+  "featured": false,
+  "sortWeight": 127,
+  "seo": {
+    "title": {
+      "en": "Valor Seasonal Occasion Edition (VLR-SEA-027) | Valor Qatar",
+      "ar": "إصدار المناسبات الموسمية من فالور (VLR-SEA-027) | فالور قطر"
+    },
+    "description": {
+      "en": "Limited seasonal presentation created for Qatari holidays and family milestones.",
+      "ar": "تشكيلة موسمية مخصصة للأعياد الوطنية والدينية والمناسبات العائلية في قطر."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Valor Seasonal Occasion Edition (VLR-SEA-027)",
+      "ar": "إصدار المناسبات الموسمية من فالور (VLR-SEA-027)"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

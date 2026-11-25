@@ -1,0 +1,77 @@
+{
+  "id": "valor-combos-003",
+  "sku": "VLR-COM-003",
+  "slug": {
+    "en": "matte-black-floral-stand-with-chocolate-drawer-003",
+    "ar": "matte-black-floral-stand-with-chocolate-drawer-003"
+  },
+  "name": {
+    "en": "Matte Black Floral Stand with Chocolate Drawer",
+    "ar": "منصة الورد السوداء مع درج الشوكولاتة"
+  },
+  "shortDescription": {
+    "en": "Black floral stand paired with a clear acrylic confectionery drawer and Arabic calligraphy.",
+    "ar": "منصة سوداء تجمع بين الورد الأحمر الطبيعي ودرج شوكولاتة أكريليك مع خط عربي مذهب."
+  },
+  "description": {
+    "en": "Coordinated floral and confectionery pairing engineered for hospital visits, housewarmings and formal gifting.",
+    "ar": "تنسيق يجمع بين الورود الطبيعية والحلويات الفاخرة لزيارات التهنئة والمناسبات الخاصة."
+  },
+  "primaryCategory": "combos",
+  "collections": ["matte-black"],
+  "occasions": ["everyday-gifting", "majlis-weddings"],
+  "images": [
+    {
+      "id": "VLR-COM-003-IMG-01",
+      "masterPath": "03_Flowers_and_Chocolate_Combos/520262495_18082754299848346_4596538091068366063_n.jpg",
+      "mediaKey": "vlr-com-003-01-520262495",
+      "role": "primary",
+      "alt": {
+        "en": "Matte Black Floral Stand with Chocolate Drawer — view 1",
+        "ar": "منصة الورد السوداء مع درج الشوكولاتة — زاوية 1"
+      },
+      "width": 1440,
+      "height": 1800
+    }
+  ],
+  "pricingMode": "price_on_request",
+  "basePriceQar": null,
+  "variants": [],
+  "customizations": [
+    {
+      "id": "acrylic-topper",
+      "type": "acrylic_topper",
+      "label": {
+        "en": "Acrylic Calligraphy Topper",
+        "ar": "عبارة أكريليك بالخط العربي"
+      },
+      "allowsCustomText": true
+    }
+  ],
+  "availability": "made_to_order",
+  "leadTimeHours": null,
+  "attributes": {
+    "packagingLine": "matte-black"
+  },
+  "featured": true,
+  "sortWeight": 9,
+  "seo": {
+    "title": {
+      "en": "Matte Black Floral Stand with Chocolate Drawer | Valor Qatar",
+      "ar": "منصة الورد السوداء مع درج الشوكولاتة | فالور قطر"
+    },
+    "description": {
+      "en": "Black floral stand paired with a clear acrylic confectionery drawer and Arabic calligraphy.",
+      "ar": "منصة سوداء تجمع بين الورد الأحمر الطبيعي ودرج شوكولاتة أكريليك مع خط عربي مذهب."
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "enquiryContext": {
+      "en": "Matte Black Floral Stand with Chocolate Drawer",
+      "ar": "منصة الورد السوداء مع درج الشوكولاتة"
+    }
+  },
+  "publicationStatus": "published",
+  "verificationStatus": "unverified"
+}

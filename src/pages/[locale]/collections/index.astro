@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProductCatalogueBrowser from '@/components/ProductCatalogueBrowser.astro';
+import { getDictionary, type Locale } from '@/i18n';
+import { getPublishedProducts } from '@/lib/catalog';
+
+export const getStaticPaths: GetStaticPaths = () => [
+  { params: { locale: 'en' } },
+  { params: { locale: 'ar' } },
+];
+
+const locale = (Astro.params.locale === 'ar' ? 'ar' : 'en') as Locale;
+const t = getDictionary(locale);
+const products = await getPublishedProducts();
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t.plp.allCollectionsTitle} — ${t.meta.siteName}`}
+  description={t.plp.allCollectionsLead}
+>
+  <ProductCatalogueBrowser
+    locale={locale}
+    products={products}
+    title={t.plp.allCollectionsTitle}
+    lead={t.plp.allCollectionsLead}
+    breadcrumbs={[
+      { label: t.pdp.breadcrumbHome, href: `/${locale}/` },
+      { label: t.plp.allCollectionsTitle },
+    ]}
+    activeCategory="all"
+    showCategoryTabs={true}
+    showOccasionFilter={true}
+  />
+</BaseLayout>

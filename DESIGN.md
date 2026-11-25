@@ -33,19 +33,19 @@ typography:
     lineHeight: 1.18
     letterSpacing: "-0.015em"
   title:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Libre Franklin, system-ui, sans-serif"
     fontSize: "1.125rem"
     fontWeight: 600
     lineHeight: 1.35
     letterSpacing: "-0.01em"
   body:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Libre Franklin, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.65
     letterSpacing: "0em"
   label:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Libre Franklin, system-ui, sans-serif"
     fontSize: "0.75rem"
     fontWeight: 600
     lineHeight: 1.3
@@ -144,7 +144,7 @@ All foreground/background pairings have been verified for WCAG 2.2 AA compliance
 ## 3. Typography
 
 - **English Display & Editorial Headings:** `Cormorant Garamond` (weights `500`, `600`, `700`). Set **upright (roman)** in hero headlines—never force oversized italic display scripts as a default formula.
-- **English UI & Body:** `Plus Jakarta Sans` (weights `400`, `500`, `600`, `700`), tabular numerals (`font-variant-numeric: tabular-nums`) on all SKUs, dimensions, and QAR prices.
+- **English UI & Body:** `Libre Franklin` (weights `400`, `500`, `600`, `700`), tabular numerals (`font-variant-numeric: tabular-nums`) on all SKUs, dimensions, and QAR prices.
 - **Arabic Display:** `Amiri` (weights `400`, `700`) for calligraphic elegance matching Arabic acrylic toppers and editorial titles.
 - **Arabic UI & Body:** `IBM Plex Sans Arabic` (fallback `Cairo`) at `line-height: 1.75` for crisp RTL scanning across dense category labels and PDP specifications.
 

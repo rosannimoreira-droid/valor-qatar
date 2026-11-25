@@ -1,0 +1,555 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProductCard from '@/components/ProductCard.astro';
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
+import Icon from '@/components/Icon.astro';
+import { BUSINESS_CONFIG } from '@/config/business';
+import { CATEGORY_IDS, OCCASION_IDS } from '@/content/config';
+import { getDictionary, type Locale } from '@/i18n';
+import { getCategoryUrl, getOccasionUrl, getProductUrl, getPublishedProducts } from '@/lib/catalog';
+import editorialMedia from '@/data/editorial-media.json';
+
+export const getStaticPaths: GetStaticPaths = () => [
+  { params: { locale: 'en' } },
+  { params: { locale: 'ar' } },
+];
+
+const locale = (Astro.params.locale === 'ar' ? 'ar' : 'en') as Locale;
+const t = getDictionary(locale);
+const isRtl = locale === 'ar';
+
+const allProducts = await getPublishedProducts();
+
+const heroProduct =
+  allProducts.find((p) => p.data.sku === 'VLR-COM-014') ??
+  allProducts.find((p) => p.data.featured) ??
+  allProducts[0];
+
+const signatureProducts = allProducts.filter((p) => p.data.featured).slice(0, 8);
+
+const categoryCards = CATEGORY_IDS.map((catId) => {
+  const catProducts = allProducts.filter((p) => p.data.primaryCategory === catId);
+  const representative = catProducts.find((p) => p.data.featured) ?? catProducts[0];
+  return {
+    id: catId,
+    count: catProducts.length,
+    href: getCategoryUrl(locale, catId),
+    name: t.categories[catId].name,
+    shortDesc: t.categories[catId].shortDesc,
+    image: representative?.data.images[0],
+  };
+}).filter((item) => item.count > 0 && item.image);
+
+const occasionCards = OCCASION_IDS.map((occId) => ({
+  id: occId,
+  count: allProducts.filter((p) => p.data.occasions.includes(occId)).length,
+  href: getOccasionUrl(locale, occId),
+  name: t.occasions[occId].name,
+  shortDesc: t.occasions[occId].shortDesc,
+}));
+
+const craftMedia =
+  editorialMedia.find((item) => item.mediaKey === 'editorial-08-751819132') ?? editorialMedia[0];
+
+const packagingQuote = isRtl
+  ? BUSINESS_CONFIG.brand.packagingQuoteAr
+  : BUSINESS_CONFIG.brand.packagingQuoteEn;
+---
+
+<BaseLayout locale={locale} title={t.meta.defaultTitle} description={t.meta.defaultDescription}>
+  <section class="hero-band">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>{t.home.heroTitle}</h1>
+        <p class="hero-subtitle prose-measure">{t.home.heroSubtitle}</p>
+        <div class="hero-actions">
+          <a href={getCategoryUrl(locale, 'all')} class="btn btn-primary">
+            <span>{t.home.heroPrimaryCta}</span>
+            <Icon name={isRtl ? 'arrow-left' : 'arrow-right'} size={17} />
+          </a>
+          <a href={`/${locale}/bespoke-hospitality/`} class="btn btn-secondary">
+            <span>{t.home.heroSecondaryCta}</span>
+          </a>
+        </div>
+      </div>
+
+      {
+        heroProduct && (
+          <figure class="hero-media-frame">
+            <a href={getProductUrl(locale, heroProduct)} class="hero-media-link">
+              <div class="hero-image-box">
+                <ResponsiveImage
+                  mediaKey={heroProduct.data.images[0].mediaKey}
+                  alt={heroProduct.data.images[0].alt[locale]}
+                  width={heroProduct.data.images[0].width}
+                  height={heroProduct.data.images[0].height}
+                  sizes="(max-width: 899px) 92vw, 44vw"
+                  priority={true}
+                  imgClass="hero-img"
+                />
+              </div>
+              <figcaption class="hero-caption">
+                <span class="hero-caption-label">{t.home.heroFeaturedCaption}</span>
+                <span class="hero-caption-title">{heroProduct.data.name[locale]}</span>
+              </figcaption>
+            </a>
+          </figure>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="heading-collections">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 id="heading-collections">{t.home.categoriesTitle}</h2>
+          <p class="section-lead">{t.home.categoriesLead}</p>
+        </div>
+        <a href={getCategoryUrl(locale, 'all')} class="section-link">
+          <span>{t.home.viewAllCollections}</span>
+          <Icon name={isRtl ? 'arrow-left' : 'arrow-right'} size={16} />
+        </a>
+      </div>
+
+      <div class="category-grid">
+        {
+          categoryCards.map((cat) => (
+            <article class="category-tile">
+              <a href={cat.href} class="category-tile-link">
+                <div class="category-tile-media">
+                  <ResponsiveImage
+                    mediaKey={cat.image!.mediaKey}
+                    alt={cat.name}
+                    width={cat.image!.width}
+                    height={cat.image!.height}
+                    sizes="(max-width: 639px) 46vw, (max-width: 1023px) 30vw, 23vw"
+                    imgClass="category-tile-img"
+                  />
+                </div>
+                <div class="category-tile-body">
+                  <div class="category-tile-head">
+                    <h3>{cat.name}</h3>
+                    <span class="category-count tabular-nums">{cat.count}</span>
+                  </div>
+                  <p class="category-tile-desc">{cat.shortDesc}</p>
+                </div>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sand" aria-labelledby="heading-signature">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 id="heading-signature">{t.home.signatureTitle}</h2>
+          <p class="section-lead">{t.home.signatureLead}</p>
+        </div>
+        <a href={getCategoryUrl(locale, 'all')} class="section-link">
+          <span>{t.home.viewAllCollections}</span>
+          <Icon name={isRtl ? 'arrow-left' : 'arrow-right'} size={16} />
+        </a>
+      </div>
+
+      <div class="product-grid">
+        {signatureProducts.map((product) => <ProductCard product={product} locale={locale} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="heading-occasions">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 id="heading-occasions">{t.home.occasionsTitle}</h2>
+          <p class="section-lead">{t.home.occasionsLead}</p>
+        </div>
+        <a href={getOccasionUrl(locale, 'all')} class="section-link">
+          <span>{t.nav.occasions}</span>
+          <Icon name={isRtl ? 'arrow-left' : 'arrow-right'} size={16} />
+        </a>
+      </div>
+
+      <div class="occasion-grid">
+        {
+          occasionCards.map((occ) => (
+            <a href={occ.href} class="occasion-card">
+              <div class="occasion-card-top">
+                <h3>{occ.name}</h3>
+                <span class="occasion-count tabular-nums">{occ.count}</span>
+              </div>
+              <p class="occasion-desc">{occ.shortDesc}</p>
+              <span class="occasion-arrow">
+                <Icon name={isRtl ? 'arrow-left' : 'arrow-right'} size={16} />
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sand" aria-labelledby="heading-craft">
+    <div class="container craft-grid">
+      <div class="craft-media">
+        <ResponsiveImage
+          mediaKey={craftMedia.mediaKey}
+          alt={t.home.craftTitle}
+          width={craftMedia.width}
+          height={craftMedia.height}
+          sizes="(max-width: 899px) 92vw, 42vw"
+          imgClass="craft-img"
+        />
+      </div>
+      <div class="craft-copy">
+        <h2 id="heading-craft">{t.home.craftTitle}</h2>
+        <p class="craft-lead prose-measure">{t.home.craftLead}</p>
+        <blockquote class="craft-quote prose-measure">“{packagingQuote}”</blockquote>
+        <a href={`/${locale}/about/`} class="btn btn-secondary">
+          <span>{t.home.craftLink}</span>
+          <Icon name={isRtl ? 'arrow-left' : 'arrow-right'} size={16} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-slate" aria-labelledby="heading-bespoke">
+    <div class="container bespoke-banner">
+      <div class="bespoke-banner-copy">
+        <h2 id="heading-bespoke">{t.home.bespokeBannerTitle}</h2>
+        <p class="bespoke-banner-lead prose-measure">{t.home.bespokeBannerLead}</p>
+      </div>
+      <a href={`/${locale}/bespoke-hospitality/`} class="btn btn-concierge">
+        <Icon name="message" size={18} />
+        <span>{t.home.bespokeBannerCta}</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-band {
+    padding-block: var(--space-10) var(--space-16);
+    border-block-end: 1px solid var(--color-border-hairline);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: var(--space-12);
+    }
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .hero-subtitle {
+    font-size: 1.0625rem;
+    color: var(--color-ink-muted);
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    padding-block-start: var(--space-2);
+  }
+
+  .hero-media-frame {
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  .hero-media-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  .hero-image-box {
+    aspect-ratio: 4 / 5;
+    max-height: 580px;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--color-surface-sand);
+  }
+
+  .hero-media-link :global(.hero-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .hero-media-link:hover :global(.hero-img) {
+    transform: scale(1.02);
+  }
+
+  .hero-caption {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4) var(--space-5);
+    border-block-start: 1px solid var(--color-border-hairline);
+  }
+
+  .hero-caption-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-terracotta);
+  }
+
+  .hero-caption-title {
+    font-family: var(--font-display);
+    font-size: 1.1875rem;
+    font-weight: 600;
+    color: var(--color-ink-obsidian);
+  }
+
+  .section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-terracotta);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .section-link:hover {
+    color: var(--color-terracotta-hover);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 560px) {
+    .category-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .category-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .category-tile {
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      box-shadow var(--duration-fast) var(--ease-out);
+  }
+
+  .category-tile:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .category-tile-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+  }
+
+  .category-tile-media {
+    aspect-ratio: 4 / 5;
+    background-color: var(--color-surface-sand);
+    overflow: hidden;
+  }
+
+  .category-tile-link :global(.category-tile-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .category-tile:hover :global(.category-tile-img) {
+    transform: scale(1.03);
+  }
+
+  .category-tile-body {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    flex: 1 1 auto;
+  }
+
+  .category-tile-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .category-count {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-ink-muted);
+  }
+
+  .category-tile-desc {
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    line-height: 1.5;
+  }
+
+  .occasion-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 640px) {
+    .occasion-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .occasion-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .occasion-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    background-color: var(--color-surface-white);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .occasion-card:hover {
+    border-color: var(--color-terracotta);
+    background-color: var(--color-terracotta-tint);
+  }
+
+  .occasion-card-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .occasion-count {
+    font-size: 0.8125rem;
+    color: var(--color-terracotta);
+    font-weight: 600;
+  }
+
+  .occasion-desc {
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    flex: 1 1 auto;
+  }
+
+  .occasion-arrow {
+    color: var(--color-terracotta);
+    padding-block-start: var(--space-2);
+  }
+
+  .craft-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .craft-grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: var(--space-12);
+    }
+  }
+
+  .craft-media {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--color-border-hairline);
+    background-color: var(--color-surface-white);
+  }
+
+  .craft-media :global(.craft-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .craft-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-5);
+  }
+
+  .craft-lead {
+    font-size: 1.0625rem;
+    color: var(--color-ink-muted);
+  }
+
+  .craft-quote {
+    padding-inline-start: var(--space-5);
+    border-inline-start: 3px solid var(--color-terracotta);
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    line-height: 1.45;
+    color: var(--color-ink-obsidian);
+  }
+
+  .bespoke-banner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+
+  .bespoke-banner-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .bespoke-banner-lead {
+    color: var(--color-ink-silver-dark);
+    font-size: 1.0625rem;
+  }
+</style>

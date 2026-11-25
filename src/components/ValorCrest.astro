@@ -1,0 +1,36 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+}
+
+const { size = 34, class: className = '' } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 64 64"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  aria-hidden="true"
+>
+  <!-- Symmetrical Tulip-V Crest grounded in Valor Qatar Apron & Packaging Mark -->
+  <path
+    d="M14 22C14 35.2548 22.0589 48 32 48C41.9411 48 50 35.2548 50 22C47.5 14 43 10 38 10L32 23L26 10C21 10 16.5 14 14 22Z"
+    stroke="currentColor"
+    stroke-width="3.2"
+    stroke-linejoin="round"></path>
+  <path
+    d="M21 21C21 31 25.5 40 32 40C38.5 40 43 31 43 21"
+    stroke="currentColor"
+    stroke-width="2.6"
+    stroke-linecap="round"></path>
+  <path
+    d="M25.5 14L32 29L38.5 14"
+    stroke="currentColor"
+    stroke-width="3.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+</svg>
