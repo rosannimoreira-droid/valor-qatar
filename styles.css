@@ -1,0 +1,1527 @@
+/* ==========================================================================
+   VALOR QATAR — Haute Chocolaterie & Fleuriste
+   Aesthetic: The Bouqs Co (Warm Organic, Editorial, Modern Lifestyle)
+   Architecture: Riviera Qatar (Qatar Luxury E-Commerce & Gifting Taxonomy)
+   ========================================================================== */
+
+:root {
+  /* The Bouqs Co Warm Organic Palette */
+  --bouqs-canvas: #FAF8F5;          /* Warm linen / soft cream */
+  --bouqs-surface: #FFFFFF;         /* Crisp pure white */
+  --bouqs-sand: #F3ECE2;            /* Soft sand / warm oatmeal */
+  --bouqs-border: #E8E2D9;          /* Subtle warm stone border */
+  --bouqs-border-hover: #D5CBBF;
+  
+  /* Text & Depth */
+  --bouqs-dark: #1F1C18;            /* Deep obsidian / espresso */
+  --bouqs-dark-subtle: #38342E;
+  --bouqs-muted: #736B63;           /* Warm stone gray */
+  --bouqs-dim: #9E958C;
+  
+  /* Accents inspired by Bouqs + Qatar Heritage */
+  --bouqs-terracotta: #B85D3B;      /* Warm clay terracotta */
+  --bouqs-terracotta-hover: #A34E2E;
+  --bouqs-terracotta-light: #F7EAE5;
+  --bouqs-sage: #455746;            /* Botanical forest sage */
+  --bouqs-sage-light: #EBF0EC;
+  --qatar-maroon: #8A1538;          /* Qatar National Maroon */
+  --qatar-maroon-light: #F9EBEF;
+  --bouqs-gold: #C5A059;            /* Subtle champagne gold */
+  --bouqs-gold-light: #FAF4E9;
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-arabic: 'Cairo', 'Amiri', Tahoma, sans-serif;
+  
+  /* Layout & Elevations */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  --shadow-subtle: 0 2px 8px rgba(31, 28, 24, 0.04);
+  --shadow-card: 0 8px 24px rgba(31, 28, 24, 0.06);
+  --shadow-card-hover: 0 16px 36px rgba(31, 28, 24, 0.12);
+  --shadow-modal: 0 24px 60px rgba(31, 28, 24, 0.18);
+  
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Document Standards */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bouqs-canvas);
+  color: var(--bouqs-dark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  line-height: 1.6;
+  background-color: var(--bouqs-canvas);
+  min-height: 100vh;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  font-family: var(--font-arabic);
+}
+
+[dir="rtl"] .serif-font,
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+  font-family: 'Amiri', 'Cairo', serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   Riviera Qatar Architecture: Top Bar & Navigation
+   ========================================================================== */
+
+/* Riviera Top Shipping & VIP Bar */
+.top-bar {
+  background: var(--qatar-maroon);
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  letter-spacing: 0.3px;
+  padding: 9px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.top-bar-text {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-bar-badge {
+  background: #FFFFFF;
+  color: var(--qatar-maroon);
+  font-weight: 800;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.top-bar-link {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.top-bar-link:hover {
+  color: var(--bouqs-gold);
+}
+
+/* Main Navigation (Clean Bouqs Lifestyle Style with Riviera Qatar Structure) */
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 248, 245, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--bouqs-border);
+  transition: var(--transition-smooth);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 86px;
+}
+
+/* Brand Identity */
+.brand-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-crest {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--qatar-maroon);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(138, 21, 56, 0.25);
+}
+
+.brand-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  letter-spacing: 3px;
+  font-weight: 800;
+  color: var(--bouqs-dark);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.brand-sub {
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  color: var(--qatar-maroon);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* Nav Menu Links (Riviera Taxonomy) */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  list-style: none;
+  white-space: nowrap;
+}
+
+.nav-link {
+  color: var(--bouqs-dark-subtle);
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 6px 0;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--bouqs-terracotta);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--bouqs-terracotta);
+  transition: var(--transition-fast);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+/* Nav Actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.currency-pill {
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--bouqs-sand);
+  color: var(--bouqs-dark);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--bouqs-border);
+}
+
+.lang-btn {
+  background: var(--bouqs-surface);
+  border: 1px solid var(--bouqs-border);
+  color: var(--bouqs-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lang-btn:hover {
+  background: var(--bouqs-sand);
+  border-color: var(--bouqs-border-hover);
+}
+
+.btn-whatsapp-nav {
+  background: #25D366;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
+  transition: var(--transition-fast);
+}
+
+.btn-whatsapp-nav:hover {
+  background: #20BA5A;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Bouqs-Inspired Hero Section (Warm, Editorial, Organic Lifestyle)
+   ========================================================================== */
+
+.hero-bouqs {
+  position: relative;
+  background: linear-gradient(180deg, #F9F5EF 0%, var(--bouqs-canvas) 100%);
+  padding: 60px 0 50px;
+  border-bottom: 1px solid var(--bouqs-border);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bouqs-terracotta-light);
+  color: var(--bouqs-terracotta);
+  border: 1px solid rgba(184, 93, 59, 0.25);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.hero-headline {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--bouqs-dark);
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+
+.hero-headline em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--bouqs-terracotta);
+}
+
+.hero-lead {
+  font-size: 1.15rem;
+  color: var(--bouqs-muted);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-bouqs-primary {
+  background: var(--bouqs-dark);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 15px 30px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition-fast);
+  box-shadow: 0 6px 20px rgba(31, 28, 24, 0.15);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-bouqs-primary:hover {
+  background: var(--bouqs-terracotta);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(184, 93, 59, 0.25);
+}
+
+.btn-bouqs-outline {
+  background: var(--bouqs-surface);
+  color: var(--bouqs-dark);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--bouqs-border);
+  transition: var(--transition-fast);
+}
+
+.btn-bouqs-outline:hover {
+  background: var(--bouqs-sand);
+  border-color: var(--bouqs-border-hover);
+  transform: translateY(-2px);
+}
+
+/* Hero Visual Montage */
+.hero-visual-wrap {
+  position: relative;
+}
+
+.hero-card-featured {
+  background: var(--bouqs-surface);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  border: 1px solid var(--bouqs-border);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card-img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  display: block;
+}
+
+.hero-floating-tag {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  padding: 16px 22px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--bouqs-border);
+}
+
+[dir="rtl"] .hero-floating-tag {
+  left: auto;
+  right: 32px;
+}
+
+.hero-floating-tag h4 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--bouqs-dark);
+  margin-bottom: 4px;
+}
+
+.hero-floating-tag p {
+  font-size: 0.85rem;
+  color: var(--bouqs-terracotta);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Bouqs-Style Circular Story Category Scroller
+   ========================================================================== */
+
+.category-discovery-bar {
+  padding: 36px 0;
+  background: var(--bouqs-surface);
+  border-bottom: 1px solid var(--bouqs-border);
+}
+
+.discovery-scroller {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 4px 10px 10px;
+  scrollbar-width: none;
+}
+
+.discovery-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.discovery-pill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  width: 108px;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.discovery-pill-item:hover {
+  transform: translateY(-4px);
+}
+
+.discovery-circle-img-wrap {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  padding: 3px;
+  border: 2px solid var(--bouqs-border);
+  background: var(--bouqs-surface);
+  margin-bottom: 8px;
+  transition: var(--transition-fast);
+  overflow: hidden;
+}
+
+.discovery-pill-item.active .discovery-circle-img-wrap,
+.discovery-pill-item:hover .discovery-circle-img-wrap {
+  border-color: var(--bouqs-terracotta);
+  box-shadow: 0 4px 14px rgba(184, 93, 59, 0.25);
+}
+
+.discovery-circle-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.discovery-pill-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--bouqs-dark-subtle);
+  text-align: center;
+  line-height: 1.25;
+}
+
+.discovery-pill-item.active .discovery-pill-label {
+  color: var(--bouqs-terracotta);
+}
+
+/* ==========================================================================
+   Bouqs 3-Step Value Propositions: "The Valor Difference"
+   ========================================================================== */
+
+.value-props-section {
+  padding: 40px 0;
+  background: var(--bouqs-sand);
+  border-bottom: 1px solid var(--bouqs-border);
+}
+
+.value-props-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.value-prop-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.value-prop-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--bouqs-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  box-shadow: var(--shadow-subtle);
+  flex-shrink: 0;
+  border: 1px solid var(--bouqs-border);
+}
+
+.value-prop-text h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--bouqs-dark);
+  margin-bottom: 4px;
+}
+
+.value-prop-text p {
+  font-size: 0.85rem;
+  color: var(--bouqs-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Riviera Qatar Catalog Showcase: Filters & Grid
+   ========================================================================== */
+
+.catalog-section {
+  padding: 60px 0 80px;
+}
+
+.catalog-header-wrap {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.catalog-tag {
+  color: var(--bouqs-terracotta);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.catalog-title {
+  font-family: var(--font-serif);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--bouqs-dark);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.catalog-subtitle {
+  font-size: 1.05rem;
+  color: var(--bouqs-muted);
+}
+
+/* Riviera-Style E-Commerce Toolbar */
+.filter-bar {
+  background: var(--bouqs-surface);
+  border: 1px solid var(--bouqs-border);
+  border-radius: var(--radius-md);
+  padding: 18px 24px;
+  margin-bottom: 36px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter-bar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Category Filter Tabs */
+.category-filter-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.category-filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-tab-btn {
+  background: var(--bouqs-canvas);
+  color: var(--bouqs-muted);
+  border: 1px solid var(--bouqs-border);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-tab-btn:hover {
+  background: var(--bouqs-sand);
+  color: var(--bouqs-dark);
+}
+
+.filter-tab-btn.active {
+  background: var(--bouqs-dark);
+  color: #FFFFFF;
+  border-color: var(--bouqs-dark);
+}
+
+.filter-tab-btn .tab-count {
+  font-size: 0.72rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.filter-tab-btn.active .tab-count {
+  background: var(--bouqs-terracotta);
+  color: #FFFFFF;
+}
+
+/* Filter Bar Bottom Controls (Occasion, Color, Sort, Search) */
+.filter-bar-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--bouqs-border);
+  flex-wrap: wrap;
+}
+
+.select-filters-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  background: var(--bouqs-canvas);
+  border: 1px solid var(--bouqs-border);
+  color: var(--bouqs-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  outline: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.filter-select:focus {
+  border-color: var(--bouqs-terracotta);
+}
+
+.search-input-wrap {
+  position: relative;
+  min-width: 260px;
+}
+
+.search-input-field {
+  width: 100%;
+  background: var(--bouqs-canvas);
+  border: 1px solid var(--bouqs-border);
+  color: var(--bouqs-dark);
+  font-size: 0.85rem;
+  padding: 8px 14px 8px 36px;
+  border-radius: var(--radius-full);
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+[dir="rtl"] .search-input-field {
+  padding: 8px 36px 8px 14px;
+}
+
+.search-input-field:focus {
+  border-color: var(--bouqs-terracotta);
+  background: var(--bouqs-surface);
+}
+
+.search-icon-pos {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--bouqs-dim);
+  font-size: 0.9rem;
+}
+
+[dir="rtl"] .search-icon-pos {
+  left: auto;
+  right: 12px;
+}
+
+/* ==========================================================================
+   Bouqs-Style Product Cards (Warm, Airy, High-Fashion Product Grid)
+   ========================================================================== */
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.bouqs-product-card {
+  background: var(--bouqs-surface);
+  border: 1px solid var(--bouqs-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-subtle);
+  position: relative;
+}
+
+.bouqs-product-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--bouqs-border-hover);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card-media {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: #F2EDE6;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-img-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bouqs-product-card:hover .card-img-main {
+  transform: scale(1.05);
+}
+
+/* Bouqs Badge Pills */
+.card-pill-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  color: var(--bouqs-dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
+
+[dir="rtl"] .card-pill-badge {
+  left: auto;
+  right: 14px;
+}
+
+.card-wish-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  font-size: 1rem;
+  transition: var(--transition-fast);
+}
+
+[dir="rtl"] .card-wish-btn {
+  right: auto;
+  left: 14px;
+}
+
+.card-wish-btn:hover, .card-wish-btn.active {
+  background: #FFF;
+  color: var(--qatar-maroon);
+  transform: scale(1.1);
+}
+
+/* Card Body */
+.card-details {
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-meta-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-cat-label {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--bouqs-terracotta);
+}
+
+.card-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.card-item-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--bouqs-dark);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.card-item-title:hover {
+  color: var(--bouqs-terracotta);
+}
+
+.card-item-desc {
+  font-size: 0.85rem;
+  color: var(--bouqs-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.card-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 14px;
+  border-top: 1px solid var(--bouqs-border);
+  margin-bottom: 16px;
+}
+
+.card-price-value {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--bouqs-dark);
+}
+
+.card-price-curr {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--bouqs-muted);
+  margin-left: 4px;
+}
+
+.card-sizes-indicator {
+  font-size: 0.74rem;
+  color: var(--bouqs-muted);
+  font-weight: 600;
+}
+
+/* Card Button Actions */
+.card-cta-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-card-details {
+  flex: 1;
+  background: var(--bouqs-canvas);
+  border: 1px solid var(--bouqs-border);
+  color: var(--bouqs-dark);
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-card-details:hover {
+  background: var(--bouqs-sand);
+  border-color: var(--bouqs-border-hover);
+}
+
+.btn-card-order-wa {
+  background: #25D366;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.btn-card-order-wa:hover {
+  background: #20BA5A;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+/* Load More Button */
+.load-more-section {
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* ==========================================================================
+   Bouqs Custom Gift Builder (Warm Organic Slide-Out / Step-By-Step)
+   ========================================================================== */
+
+.custom-builder-section {
+  padding: 80px 0;
+  background: #F4EFEA;
+  border-top: 1px solid var(--bouqs-border);
+  border-bottom: 1px solid var(--bouqs-border);
+}
+
+.builder-split-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.builder-form-card {
+  background: var(--bouqs-surface);
+  border: 1px solid var(--bouqs-border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-card);
+}
+
+.builder-step-block {
+  margin-bottom: 28px;
+}
+
+.step-header-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.step-circle-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--bouqs-terracotta);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-heading {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--bouqs-dark);
+}
+
+.options-tile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.option-tile-btn {
+  background: var(--bouqs-canvas);
+  border: 1px solid var(--bouqs-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: var(--bouqs-dark-subtle);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+[dir="rtl"] .option-tile-btn {
+  text-align: right;
+}
+
+.option-tile-btn:hover {
+  background: var(--bouqs-sand);
+}
+
+.option-tile-btn.selected {
+  background: var(--bouqs-terracotta-light);
+  border-color: var(--bouqs-terracotta);
+  color: var(--bouqs-terracotta);
+  font-weight: 800;
+}
+
+/* Builder Live Summary Card */
+.builder-summary-sticky {
+  position: sticky;
+  top: 110px;
+  background: var(--bouqs-surface);
+  border: 1px solid var(--bouqs-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+}
+
+.summary-pill-top {
+  display: inline-block;
+  background: var(--bouqs-terracotta);
+  color: #FFF;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 14px;
+}
+
+.summary-heading {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  color: var(--bouqs-dark);
+  margin-bottom: 16px;
+}
+
+.summary-spec-list {
+  list-style: none;
+  border-top: 1px solid var(--bouqs-border);
+  padding-top: 16px;
+  margin-bottom: 24px;
+}
+
+.spec-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 0.88rem;
+}
+
+.spec-title {
+  color: var(--bouqs-muted);
+}
+
+.spec-choice {
+  color: var(--bouqs-dark);
+  font-weight: 700;
+  text-align: right;
+}
+
+[dir="rtl"] .spec-choice {
+  text-align: left;
+}
+
+/* ==========================================================================
+   Slide-Over Modal (Bouqs Clean Quick-View with Riviera Order Attributes)
+   ========================================================================== */
+
+.modal-screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 28, 24, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-screen.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-inner-card {
+  background: var(--bouqs-surface);
+  border-radius: var(--radius-lg);
+  max-width: 920px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: var(--shadow-modal);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  border: 1px solid var(--bouqs-border);
+}
+
+.modal-screen.open .modal-inner-card {
+  transform: translateY(0);
+}
+
+.modal-dismiss-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  background: var(--bouqs-surface);
+  border: 1px solid var(--bouqs-border);
+  color: var(--bouqs-dark);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+[dir="rtl"] .modal-dismiss-btn {
+  right: auto;
+  left: 16px;
+}
+
+.modal-dismiss-btn:hover {
+  background: var(--bouqs-sand);
+}
+
+.modal-photo-column {
+  background: #F2ECE4;
+  height: 100%;
+  min-height: 420px;
+}
+
+.modal-photo-column img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-content-column {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-cat-tag {
+  font-size: 0.76rem;
+  color: var(--bouqs-terracotta);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.modal-item-title {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  color: var(--bouqs-dark);
+  margin-bottom: 10px;
+}
+
+.modal-price-display {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--bouqs-dark);
+  margin-bottom: 16px;
+}
+
+.modal-item-desc {
+  font-size: 0.92rem;
+  color: var(--bouqs-muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+/* Size Option Buttons (Bouqs Style: Original, Deluxe, Grand) */
+.size-selector-wrap {
+  margin-bottom: 22px;
+}
+
+.size-selector-wrap label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--bouqs-dark);
+  margin-bottom: 8px;
+}
+
+.size-btns-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.size-choice-btn {
+  background: var(--bouqs-canvas);
+  border: 1px solid var(--bouqs-border);
+  color: var(--bouqs-dark);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.size-choice-btn.selected {
+  background: var(--bouqs-dark);
+  color: #FFFFFF;
+  border-color: var(--bouqs-dark);
+}
+
+/* Calligraphy Topper Dropdown */
+.topper-select-wrap {
+  margin-bottom: 24px;
+}
+
+.topper-select-wrap label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--bouqs-dark);
+  margin-bottom: 8px;
+}
+
+.topper-select-input {
+  width: 100%;
+  background: var(--bouqs-canvas);
+  border: 1px solid var(--bouqs-border);
+  color: var(--bouqs-dark);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  outline: none;
+}
+
+.modal-bottom-actions {
+  margin-top: auto;
+}
+
+.btn-modal-order-wa {
+  width: 100%;
+  background: #25D366;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
+  transition: var(--transition-fast);
+}
+
+.btn-modal-order-wa:hover {
+  background: #20BA5A;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Footer (Riviera Qatar Business Info & Bouqs Warm Earthy Tone)
+   ========================================================================== */
+
+.bouqs-footer {
+  background: #24201C;
+  color: #E2DBD2;
+  padding: 70px 0 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.footer-brand h3 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.footer-brand p {
+  font-size: 0.88rem;
+  color: #ADA49A;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.footer-col-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+}
+
+.footer-link-list {
+  list-style: none;
+}
+
+.footer-link-list li {
+  margin-bottom: 10px;
+}
+
+.footer-link-list a {
+  color: #ADA49A;
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: var(--transition-fast);
+}
+
+.footer-link-list a:hover {
+  color: #FFFFFF;
+}
+
+.footer-legal-bar {
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: #8C8379;
+}
+
+/* Floating WhatsApp Concierge Pill */
+.floating-wa-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99;
+  background: #25D366;
+  color: #FFFFFF;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+  transition: var(--transition-fast);
+}
+
+[dir="rtl"] .floating-wa-pill {
+  right: auto;
+  left: 24px;
+}
+
+.floating-wa-pill:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #20BA5A;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .value-props-grid {
+    grid-template-columns: 1fr;
+  }
+  .builder-split-grid {
+    grid-template-columns: 1fr;
+  }
+  .builder-summary-sticky {
+    position: static;
+  }
+  .footer-top-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 2.6rem;
+  }
+  .nav-links {
+    display: none;
+  }
+  .modal-inner-card {
+    grid-template-columns: 1fr;
+  }
+  .modal-photo-column {
+    height: 280px;
+    min-height: auto;
+  }
+  .options-tile-grid {
+    grid-template-columns: 1fr;
+  }
+}
